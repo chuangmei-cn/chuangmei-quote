@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>创美机电 | 永磁防汛潜水泵 — 专业防汛排涝解决方案</title>
+<style>
+/* === RESET & FONTS === */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200..800;1,9..40,200..800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --brand-900: oklch(24% 0.10 258);
+  --brand-800: oklch(32% 0.13 258);
+  --brand-700: oklch(40% 0.15 256);
+  --brand-600: oklch(48% 0.16 254);
+  --brand-500: oklch(56% 0.17 252);
+  --brand-400: oklch(68% 0.12 250);
+  --brand-200: oklch(88% 0.04 252);
+  --brand-100: oklch(94% 0.02 255);
+
+  --neutral-900: oklch(18% 0.004 255);
+  --neutral-800: oklch(26% 0.005 255);
+  --neutral-700: oklch(36% 0.006 255);
+  --neutral-600: oklch(48% 0.005 255);
+  --neutral-500: oklch(58% 0.005 255);
+  --neutral-400: oklch(70% 0.004 255);
+  --neutral-300: oklch(82% 0.003 255);
+  --neutral-200: oklch(90% 0.003 255);
+  --neutral-100: oklch(95% 0.002 255);
+  --neutral-50:  oklch(97.5% 0.001 255);
+
+  --accent: oklch(58% 0.20 40);
+  --accent-dim: oklch(68% 0.14 42);
+
+  --font-sans: 'DM Sans', -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+  --text-base: var(--neutral-800);
+  --text-muted: var(--neutral-500);
+  --bg-surface: var(--neutral-50);
+  --border-subtle: oklch(85% 0.004 258);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1vw + 0.8rem, 1.125rem);
+  line-height: 1.6;
+  color: var(--text-base);
+  background: oklch(99% 0.001 255);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* === TYPOGRAPHY === */
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 650; line-height: 1.18; letter-spacing: -0.02em; }
+h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 600; line-height: 1.3; }
+h4 { font-size: 1.0625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-600); }
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neutral-500);
+}
+
+/* === LAYOUT === */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 4rem); }
+.container-wide { max-width: 1440px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 4rem); }
+
+.section { padding: clamp(4rem, 8vw, 8rem) 0; }
+.section + .section { border-top: 1px solid var(--border-subtle); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 3rem); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2.5vw, 2rem); }
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .grid-2 { gap: 2.5rem; }
+}
+
+/* === NAV === */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: clamp(0.75rem, 1.5vw, 1.25rem) 0;
+  background: oklch(99% 0.001 255 / 0.85);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.35s ease;
+}
+.nav.scrolled { border-bottom-color: var(--border-subtle); }
+.nav .container { display: flex; justify-content: space-between; align-items: center; }
+
+.logo {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em;
+  color: var(--brand-800); text-decoration: none;
+}
+.logo-mark {
+  width: 40px; height: 40px; border-radius: 6px;
+  background: linear-gradient(135deg, var(--brand-700), var(--brand-500));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 800; font-size: 1.125rem;
+}
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--neutral-600); font-weight: 500;
+  font-size: 0.9375rem; transition: color 0.2s; position: relative;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--brand-700); }
+.nav-links a.active::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 2px; background: var(--brand-600); border-radius: 2px;
+}
+
+/* === HERO === */
+.hero {
+  padding: clamp(8rem, 14vw, 12rem) 0 clamp(4rem, 8vw, 6rem);
+  background: var(--brand-900);
+  color: var(--brand-100);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 80%, oklch(40% 0.12 255 / 0.4), transparent),
+    radial-gradient(ellipse 50% 60% at 80% 20%, oklch(35% 0.10 250 / 0.3), transparent);
+}
+.hero .container { position: relative; z-index: 1; }
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--brand-400); margin-bottom: 1.25rem;
+}
+.hero h1 { max-width: 14ch; color: oklch(97% 0.01 255); }
+.hero h1 span { color: var(--brand-400); }
+.hero-lead {
+  margin-top: 1.5rem; font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+  color: oklch(82% 0.03 252); max-width: 42ch; line-height: 1.55;
+}
+.hero-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  margin-top: clamp(3rem, 5vw, 5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid oklch(45% 0.08 255 / 0.4);
+}
+.stat-value { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #fff; line-height: 1.1; }
+.stat-label { font-size: 0.875rem; color: var(--brand-400); margin-top: 0.375rem; }
+@media (max-width: 768px) { .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
+
+/* === PRODUCT SHOWCASE === */
+.product-visual {
+  position: relative;
+  background: oklch(22% 0.07 256);
+  border-radius: 12px;
+  aspect-ratio: 4/3;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 32px oklch(10% 0.05 255 / 0.3);
+}
+.product-visual .placeholder-diagram {
+  width: 80%; max-width: 420px;
+  display: grid; gap: 8px;
+}
+.product-visual .diagram-row {
+  display: flex; gap: 8px; align-items: center;
+}
+.diagram-block {
+  background: linear-gradient(135deg, oklch(45% 0.12 254 / 0.5), oklch(55% 0.15 252 / 0.4));
+  border: 1px solid oklch(60% 0.14 250 / 0.35);
+  border-radius: 6px;
+}
+.diagram-block.motor { height: 64px; flex: 2; }
+.diagram-block.body { height: 80px; flex: 3; }
+.diagram-block.impeller { height: 48px; flex: 1.5; border-radius: 50%; }
+.diagram-block.outlet { height: 28px; flex: 1; }
+.diagram-label {
+  color: oklch(78% 0.04 252); font-family: var(--font-mono);
+  font-size: 0.6875rem; text-align: center; letter-spacing: 0.05em;
+}
+.product-visual .badge-float {
+  position: absolute; top: 1.25rem; right: 1.25rem;
+  background: var(--accent); color: var(--neutral-900);
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600;
+  padding: 0.375rem 0.875rem; border-radius: 4px; letter-spacing: 0.04em;
+}
+
+/* === PARAMS TABLE === */
+.param-table-wrapper {
+  overflow-x: auto; margin-top: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--border-subtle), 0 2px 8px oklch(10% 0.02 255 / 0.04);
+}
+.param-table {
+  width: 100%; border-collapse: collapse; font-size: 0.9375rem;
+  background: oklch(99% 0.001 255);
+}
+.param-table thead { background: var(--brand-900); color: var(--brand-100); }
+.param-table th {
+  padding: 1rem 1.25rem; text-align: left; font-weight: 600;
+  font-size: 0.8125rem; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.param-table td {
+  padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-subtle);
+  color: var(--neutral-700);
+}
+.param-table tbody tr:hover { background: var(--brand-100); }
+.param-table .highlight { color: var(--brand-700); font-weight: 600; }
+
+/* === TECH CARDS === */
+.tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: 3rem; }
+@media (max-width: 768px) { .tech-grid { grid-template-columns: 1fr; } }
+.tech-card {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: oklch(98.5% 0.002 255);
+  border-radius: 8px;
+  position: relative;
+  transition: background 0.25s;
+}
+.tech-card:hover { background: var(--brand-100); }
+.tech-card .num {
+  font-family: var(--font-mono); font-size: 1.75rem; font-weight: 600;
+  color: var(--brand-400); line-height: 1;
+}
+.tech-card h3 { margin-top: 0.75rem; font-size: 1.25rem; }
+.tech-card p { margin-top: 0.5rem; color: var(--neutral-600); line-height: 1.6; }
+
+/* === SCENARIO CARDS === */
+.scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+@media (max-width: 768px) { .scenario-grid { grid-template-columns: 1fr; } }
+.scenario-card {
+  border-radius: 8px; overflow: hidden; background: var(--neutral-100);
+  transition: box-shadow 0.3s;
+}
+.scenario-card:hover {
+  box-shadow: 0 4px 20px oklch(10% 0.05 255 / 0.08);
+}
+.scenario-img {
+  height: 200px; background: linear-gradient(135deg, var(--brand-800), var(--brand-700));
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.scenario-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 70%, oklch(50% 0.15 254 / 0.4), transparent);
+}
+.scenario-img .icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  border: 2px solid oklch(75% 0.06 252 / 0.5);
+  display: flex; align-items: center; justify-content: center;
+}
+.scenario-img .icon svg { width: 32px; height: 32px; stroke: var(--brand-300); }
+.scenario-body { padding: 1.5rem; }
+.scenario-body h3 { font-size: 1.125rem; color: var(--neutral-800); }
+.scenario-body p { margin-top: 0.5rem; color: var(--neutral-500); font-size: 0.9375rem; }
+
+/* === CERT SECTION === */
+.cert-strip {
+  margin-top: 3rem; display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 768px) { .cert-strip { grid-template-columns: 1fr; } }
+.cert-item {
+  padding: 2rem; border-radius: 6px;
+  background: var(--neutral-100);
+  display: flex; gap: 1.25rem; align-items: flex-start;
+}
+.cert-icon {
+  flex-shrink: 0; width: 48px; height: 48px; border-radius: 6px;
+  background: var(--brand-700); display: flex; align-items: center; justify-content: center;
+}
+.cert-icon svg { width: 26px; height: 26px; stroke: #fff; }
+.cert-content h4 { text-transform: none; letter-spacing: normal; font-size: 1rem; color: var(--neutral-800); margin-bottom: 0.375rem; }
+.cert-content p { color: var(--neutral-500); font-size: 0.875rem; }
+
+/* === CTA === */
+.cta-section {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--brand-900);
+  color: var(--brand-100);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 60% at 50% 80%, oklch(38% 0.12 256 / 0.5), transparent);
+}
+.cta-section .container { position: relative; z-index: 1; }
+.cta-section h2 { color: #fff; max-width: 20ch; margin: 0 auto; }
+.cta-section p { margin-top: 1.25rem; color: var(--brand-300); font-size: 1.125rem; max-width: 48ch; margin-left: auto; margin-right: auto; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.625rem;
+  padding: 0.875rem 2rem; border-radius: 6px; font-weight: 600;
+  font-size: 0.9375rem; text-decoration: none; cursor: pointer;
+  transition: all 0.2s; border: none; letter-spacing: 0.01em;
+}
+.btn-primary {
+  background: var(--accent); color: var(--neutral-900);
+}
+.btn-primary:hover { background: var(--accent-dim); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent; color: var(--brand-200);
+  box-shadow: inset 0 0 0 1.5px oklch(65% 0.08 252 / 0.5);
+}
+.btn-outline:hover {
+  background: oklch(35% 0.10 254 / 0.4);
+  box-shadow: inset 0 0 0 1.5px var(--brand-400);
+}
+.btn-group { margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* === FOOTER === */
+.footer {
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  background: var(--neutral-900); color: var(--neutral-400);
+  font-size: 0.875rem;
+}
+.footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+.footer-info { display: flex; gap: 2rem; }
+.footer-info span { display: flex; align-items: center; gap: 0.5rem; }
+.footer-info svg { width: 16px; height: 16px; stroke: var(--neutral-400); }
+
+/* === ANIMATIONS === */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fade-up.visible { opacity: 1; transform: none; }
+}
+
+/* === SECTION TITLE === */
+.section-label {
+  font-family: var(--font-mono); font-size: 0.8125rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--brand-600); margin-bottom: 0.75rem;
+}
+.section-title { margin-bottom: 0.75rem; }
+.section-desc { color: var(--neutral-500); max-width: 52ch; }
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--neutral-100); }
+::-webkit-scrollbar-thumb { background: var(--neutral-300); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--neutral-400); }
+
+/* === SELECTION === */
+::selection { background: var(--brand-200); color: var(--brand-900); }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#" class="logo">
+      <div class="logo-mark">CM</div>
+      创美机电
+    </a>
+    <ul class="nav-links">
+      <li><a href="#product" class="active">产品系列</a></li>
+      <li><a href="#tech">技术优势</a></li>
+      <li><a href="#scenarios">应用场景</a></li>
+      <li><a href="#cert">资质认证</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="hero">
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <p class="hero-eyebrow">浙江创美机电有限公司 · 1996年成立</p>
+        <h1>永磁防汛潜水泵<span>.</span></h1>
+        <p class="hero-lead">
+          泵行业首家永磁同步电机泵制造商，2013年上海泵展会首发。体积减小30-50%，重量减轻70%+，效率90-95%，节能30%+——重新定义防汛装备标准。
+        </p>
+      </div>
+      <div class="product-visual fade-up">
+        <div class="placeholder-diagram">
+          <div class="diagram-row">
+            <div class="diagram-block motor"></div>
+            <div class="diagram-block outlet"></div>
+          </div>
+          <div class="diagram-label">永磁同步电机模块</div>
+          <div class="diagram-row">
+            <div class="diagram-block body" style="height: 72px;"></div>
+            <div class="diagram-block impeller" style="border-radius: 50%;"></div>
+          </div>
+          <div class="diagram-label">泵体总成 · 防砂叶轮设计</div>
+        </div>
+        <div class="badge-float">IP68 · 一级节能</div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-value">90-95%</div><div class="stat-label">电机效率</div></div>
+      <div><div class="stat-value">30-50%</div><div class="stat-label">体积减小</div></div>
+      <div><div class="stat-value">70%+</div><div class="stat-label">重量减轻</div></div>
+      <div><div class="stat-value">30%+</div><div class="stat-label">节能效果</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== PRODUCT PARAMS ===== -->
+<section class="section" id="product">
+  <div class="container">
+    <p class="section-label">产品系列</p>
+    <h2 class="section-title">技术参数一览</h2>
+    <p class="section-desc">全系列产品覆盖 6/8/10/12 寸口径，流量 100-2000m³/h，扬程 6-180m，功率 3-300KW。以下为各系列代表性型号。</p>
+
+    <!-- 大流量低扬程 -->
+    <h3 style="margin-top: 2.5rem; color: var(--brand-700);">大流量低扬程防汛泵</h3>
+    <div class="param-table-wrapper fade-up" style="margin-top: 1rem;">
+      <table class="param-table">
+        <thead><tr><th>系列</th><th>口径</th><th>代表型号</th><th>流量 (m³/h)</th><th>扬程 (m)</th><th>功率 (kW)</th><th>净重 (kg)</th><th>材质</th></tr></thead>
+        <tbody>
+          <tr><td>6寸</td><td>DN150</td><td class="highlight">150SZQ100-6-3</td><td>100</td><td>6</td><td>3</td><td>18</td><td>不锈钢</td></tr>
+          <tr><td>6寸</td><td>DN150</td><td class="highlight">150SZQ250-9-11</td><td>250</td><td>9</td><td>11</td><td>22</td><td>不锈钢</td></tr>
+          <tr><td>8寸</td><td>DN200</td><td class="highlight">200SZQ470-7-15</td><td>470</td><td>7</td><td>15</td><td>20</td><td>铝合金</td></tr>
+          <tr><td>8寸</td><td>DN200</td><td class="highlight">200SZQ600-10-30</td><td>600</td><td>10</td><td>30</td><td>24.5</td><td>铝合金</td></tr>
+          <tr><td>10寸</td><td>DN250</td><td class="highlight">250SZQ600-10-30</td><td>600</td><td>10</td><td>30</td><td>29.5</td><td>不锈钢</td></tr>
+          <tr><td>10寸</td><td>DN250</td><td class="highlight">250SZQ720-10-37</td><td>720</td><td>10</td><td>37</td><td>36.5</td><td>铝合金</td></tr>
+          <tr><td>12寸</td><td>DN300</td><td class="highlight">300SZQ1000-10-45</td><td>1000</td><td>10</td><td>45</td><td>55</td><td>铝合金</td></tr>
+          <tr><td>12寸</td><td>DN300</td><td class="highlight">300SZQ1200-10-55</td><td>1200</td><td>10</td><td>55</td><td>58</td><td>铝合金</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 高扬程 -->
+    <h3 style="margin-top: 2.5rem; color: var(--brand-700);">高扬程防汛泵</h3>
+    <div class="param-table-wrapper fade-up" style="margin-top: 1rem;">
+      <table class="param-table">
+        <thead><tr><th>系列</th><th>口径</th><th>代表型号</th><th>流量 (m³/h)</th><th>扬程 (m)</th><th>功率 (kW)</th><th>净重 (kg)</th></tr></thead>
+        <tbody>
+          <tr><td>6寸</td><td>DN150</td><td class="highlight">150SZQ100-50-22</td><td>100</td><td>50</td><td>22</td><td>29</td></tr>
+          <tr><td>6寸</td><td>DN150</td><td class="highlight">150SZQ200-25-22</td><td>200</td><td>25</td><td>22</td><td>29</td></tr>
+          <tr><td>8寸</td><td>DN200</td><td class="highlight">200SZQ300-40-55</td><td>300</td><td>40</td><td>55</td><td>60</td></tr>
+          <tr><td>8寸</td><td>DN200</td><td class="highlight">200SZQ500-30-75</td><td>500</td><td>30</td><td>75</td><td>66</td></tr>
+          <tr><td>8寸</td><td>DN200</td><td class="highlight">200SZQ500-40-95</td><td>500</td><td>40</td><td>95</td><td>96</td></tr>
+          <tr><td>8寸超高</td><td>DN200</td><td class="highlight">200SZQ400-80-150</td><td>400</td><td>80</td><td>150</td><td>155</td></tr>
+          <tr><td>8寸超高</td><td>DN200</td><td class="highlight">200SZQ500-80-180</td><td>500</td><td>80</td><td>180</td><td>220</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 特殊功能泵 -->
+    <h3 style="margin-top: 2.5rem; color: var(--brand-700);">特殊功能泵</h3>
+    <div class="param-table-wrapper fade-up" style="margin-top: 1rem;">
+      <table class="param-table">
+        <thead><tr><th>类型</th><th>口径</th><th>代表型号</th><th>流量 (m³/h)</th><th>扬程 (m)</th><th>功率 (kW)</th><th>特点</th></tr></thead>
+        <tbody>
+          <tr><td>双用泵</td><td>DN200</td><td class="highlight">200SZQ-22HL</td><td>500/150</td><td>10/35</td><td>22</td><td>高低扬程切换</td></tr>
+          <tr><td>双用泵</td><td>DN250</td><td class="highlight">250SZQ-30HL</td><td>600/300</td><td>12/23</td><td>30</td><td>高低扬程切换</td></tr>
+          <tr><td>下吸式</td><td>DN250</td><td class="highlight">250SZQ800-9-37L</td><td>800</td><td>9</td><td>37</td><td>超低水位排涝</td></tr>
+          <tr><td>接力泵</td><td>DN300</td><td class="highlight">300SZQ1000-10-45GL</td><td>1000</td><td>10</td><td>45</td><td>远距离输水增压</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top: 1rem; font-size: 0.8125rem; color: var(--neutral-500);">
+      * 以上为代表性型号。全系列 90+ 款型号可选，支持按项目需求定制。配套提供水带、浮体、电缆、智能控制柜、防汛单元（开箱即用）。
+    </p>
+  </div>
+</section>
+
+<!-- ===== TECH ADVANTAGES ===== -->
+<section class="section" id="tech" style="background: var(--neutral-50);">
+  <div class="container">
+    <p class="section-label">核心技术</p>
+    <h2 class="section-title">六大技术优势</h2>
+    <p class="section-desc">基于永磁同步电机驱动平台，从材料、结构、控制三个维度实现系统级创新，拥有发明专利7项、实用新型17项、外观设计3项。</p>
+    <div class="tech-grid">
+      <div class="tech-card fade-up">
+        <div class="num">01</div>
+        <h3>体积小重量轻</h3>
+        <p>体积减小 30%-50%，重量减轻 70% 以上（常规泵重量的 1/4），1-2 人即可搬运，大幅降低部署难度和运输成本。</p>
+      </div>
+      <div class="tech-card fade-up">
+        <div class="num">02</div>
+        <h3>高效节能</h3>
+        <p>永磁同步电机效率 90%-95%，比传统异步电机节能 30% 以上，全系列通过国家一级节能认证（CQC认证）。</p>
+      </div>
+      <div class="tech-card fade-up">
+        <div class="num">03</div>
+        <h3>智能4G远程控制</h3>
+        <p>支持 4G 远程控制、自动化运行、智能化监控，可实现无人值守；变频驱动器具有过热/过流/过载保护，无水自动停机。</p>
+      </div>
+      <div class="tech-card fade-up">
+        <div class="num">04</div>
+        <h3>防砂耐用叶轮</h3>
+        <p>采用半开式防砂叶轮设计，过流通道加宽，适应含泥沙量 ≤15% 的浑水工况。叶轮材质选用高铬耐磨合金铸铁，使用寿命达普通铸铁 3 倍以上。</p>
+      </div>
+      <div class="tech-card fade-up">
+        <div class="num">05</div>
+        <h3>IP68防护等级</h3>
+        <p>泵体 IP68（可长期潜水），控制柜 IP44/IP54，双重机械密封+进口轴承，确保长期水下浸泡稳定运行。</p>
+      </div>
+      <div class="tech-card fade-up">
+        <div class="num">06</div>
+        <h3>快速部署</h3>
+        <p>卡扣式快速接头，标配水带接头，10 分钟内完成部署。防汛单元（开箱即用）集成泵+电器柜+浮体+出口接头+水带。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APPLICATION SCENARIOS ===== -->
+<section class="section" id="scenarios">
+  <div class="container">
+    <p class="section-label">应用场景</p>
+    <h2 class="section-title">全方位防汛排涝覆盖</h2>
+    <p class="section-desc">产品已在全国防汛工程中成功应用，覆盖城市内涝、地铁隧道、农田排涝、地下空间、消防供水、海水养殖、建筑施工、水利工程八大场景。</p>
+    <div class="scenario-grid">
+      <div class="scenario-card fade-up">
+        <div class="scenario-img">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <h3>城市内涝应急救援</h3>
+          <p>极端暴雨频发，传统排水系统不堪重负。推荐大流量防汛泵（200SZQ/250SZQ/300SZQ），流量 400-1500m³/h，铝合金轻型泵 1-2 人即可搬运，防汛单元开箱即用。</p>
+        </div>
+      </div>
+      <div class="scenario-card fade-up">
+        <div class="scenario-img" style="background: linear-gradient(135deg, oklch(30% 0.11 258), oklch(42% 0.14 256));">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 20h20M5 20V12l7-8 7 8v8"/>
+            </svg>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <h3>地铁隧道防汛</h3>
+          <p>地铁入口/风亭/出入口暴雨进水风险高。推荐高扬程防汛泵（150SZQ/200SZQ），扬程 20-150m，紧凑型设计可轻松通过闸机/楼梯，不锈钢材质耐腐蚀长寿命。</p>
+        </div>
+      </div>
+      <div class="scenario-card fade-up">
+        <div class="scenario-img" style="background: linear-gradient(135deg, oklch(28% 0.12 260), oklch(40% 0.15 258));">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <h3>应急抢险救援</h3>
+          <p>集成于移动泵车/抢险车上，快速抵达现场即插即用。宽电压设计适配发电机供电，轻量化便于人工搬运部署，争分夺秒抢排险情。</p>
+        </div>
+      </div>
+      <div class="scenario-card fade-up">
+        <div class="scenario-img" style="background: linear-gradient(135deg, oklch(32% 0.10 200), oklch(44% 0.12 195));">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <h3>农田灌溉排涝</h3>
+          <p>农业生产需应对旱季灌溉+雨季内涝双重需求。铝合金轻型泵配移动轮组，单人推动；永磁同步电机节能 30%+，大幅降低农用电费成本。</p>
+        </div>
+      </div>
+      <div class="scenario-card fade-up">
+        <div class="scenario-img" style="background: linear-gradient(135deg, oklch(26% 0.08 260), oklch(38% 0.10 255));">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <h3>地下空间排水</h3>
+          <p>地下车库/地下室/地下商场/人防工程暴雨倒灌风险。迷你型电器柜（690×690×145mm），低噪音永磁电机，快速接头+软管 10 分钟内部署。</p>
+        </div>
+      </div>
+      <div class="scenario-card fade-up">
+        <div class="scenario-img" style="background: linear-gradient(135deg, oklch(30% 0.12 30), oklch(42% 0.14 35));">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+        </div>
+        <div class="scenario-body">
+          <h3>消防供水</h3>
+          <p>天然水源不足/市政消防栓无法覆盖区域需移动消防泵保障。轻量化设计，单泵流量 500-1000m³/h，耐高温材料和密封，适配森林/石化/偏远地区火灾救援。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CERTIFICATION ===== -->
+<section class="section" id="cert" style="background: var(--neutral-50);">
+  <div class="container">
+    <p class="section-label">资质认证</p>
+    <h2 class="section-title">品质保障体系</h2>
+    <p class="section-desc">全系列产品通过国家一级节能认证、环境标志认证、产品质量认证，拥有发明专利7项、实用新型17项、外观设计3项，满足政采招标技术审核要求。</p>
+    <div class="cert-strip">
+      <div class="cert-item fade-up">
+        <div class="cert-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 15l-2 5l9-13h-4l2-7l-9 13h4z"/>
+          </svg>
+        </div>
+        <div class="cert-content">
+          <h4>国家一级节能认证 ×3</h4>
+          <p>永磁同步电机防汛泵（2张）及永磁同步电动机均获中国质量认证中心 CQC 一级节能认证，证书编号 0QC24701453667/74、CQC19701217917。</p>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-icon" style="background: oklch(42% 0.14 200);">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 12l2 2l4-4"/><circle cx="12" cy="12" r="10"/>
+          </svg>
+        </div>
+        <div class="cert-content">
+          <h4>中国环境标志(Ⅱ型)认证</h4>
+          <p>中环联合认证中心颁发，永磁同步电机泵使用的电机均为一级能效，实现节能效果。适用型号 10SZQ/8SZQ/4SZQ/12SZQ 系列。</p>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-icon" style="background: oklch(40% 0.13 35);">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <div class="cert-content">
+          <h4>ISO 三体系认证</h4>
+          <p>ISO 9001:2015（质量）、ISO 14001:2015（环境）、ISO 45001:2018（职业健康安全）三体系认证，证书编号 29025Q10998-05R1M 等。</p>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-icon" style="background: oklch(38% 0.12 280);">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="cert-content">
+          <h4>装备承制单位资格（军选民用）</h4>
+          <p>中央军委装备发展部颁发，证书编号 25B0001364，有效期至 2030 年 4 月，具备军品供应资质。</p>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-icon" style="background: oklch(44% 0.13 120);">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <path d="M22 4L12 14.01l-3-3"/>
+          </svg>
+        </div>
+        <div class="cert-content">
+          <h4>浙江省专精特新中小企业</h4>
+          <p>浙江省经济和信息化厅认定（2023.12-2026.12），国家高新技术企业，拥有防汛排涝泵研究中心共建资质。</p>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-icon" style="background: oklch(36% 0.11 40);">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="cert-content">
+          <h4>《应急排涝潜水电泵》团体标准主编</h4>
+          <p>工信部立项起草单位，参与制定行业标准，拥有软件著作权（永磁同步电机泵变频调速自动控制及远程系统 V1.0）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <h2>为您的防汛项目选配最优方案</h2>
+    <p>我们提供项目现场勘察、水力计算选型、安装调试指导、运维培训的全周期技术服务。致电或留言，技术团队 24 小时内响应。</p>
+    <div class="btn-group">
+      <a href="#" class="btn btn-primary">获取技术方案</a>
+      <a href="#" class="btn btn-outline">下载产品手册 (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div class="logo-mark" style="width: 32px; height: 32px; font-size: 0.875rem;">CM</div>
+      <span>创美机电 — 永磁防汛泵专业制造商</span>
+    </div>
+    <div class="footer-info">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        服务热线：15968662709
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        1320197922@139.com
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 6v6l4 2"/></svg>
+        浙江省温岭市大溪镇塔岙工业区
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll-triggered animations
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Active nav link
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+</body>
+</html>
