@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>创美机电便携报价系统</title>
+<style>
+:root {
+  --bg-deep: #0F1A2C;
+  --bg-mid: #1B2D4A;
+  --bg-card: #1E3250;
+  --accent: #00A3E0;
+  --accent-light: #33B5E8;
+  --text: #E8ECF1;
+  --text-secondary: #8A9BB5;
+  --border: #2A3F5F;
+  --green: #00C853;
+  --yellow: #FFD600;
+  --red: #FF5252;
+  --price-color: #FF8A00;
+  --shadow: 0 4px 20px rgba(0,0,0,0.3);
+  --radius: 8px;
+  --transition: all 0.2s ease;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg-deep);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Header */
+.header {
+  background: var(--bg-mid);
+  padding: 12px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+  border-bottom: 2px solid var(--accent);
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.logo span { color: var(--text); font-weight: 400; font-size: 14px; }
+/* Navigation */
+.nav-tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.nav-tab {
+  flex: 1;
+  min-width: 90px;
+  padding: 10px 14px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.nav-tab:hover { border-color: var(--accent); color: var(--text); }
+.nav-tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+/* Page container */
+.page { display: none; padding: 16px; }
+.page.active { display: block; }
+/* Section */
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 16px 0 10px;
+  padding: 8px 12px;
+  background: var(--bg-mid);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.section-title .count {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+/* Search bar */
+.search-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.search-bar input {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 14px;
+  background: var(--bg-mid);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+.search-bar input:focus { outline: none; border-color: var(--accent); }
+.search-bar select {
+  padding: 10px 14px;
+  background: var(--bg-mid);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+  font-size: 14px;
+  min-width: 140px;
+}
+/* Product Table */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 700px;
+}
+th {
+  background: var(--bg-mid);
+  color: var(--accent);
+  padding: 10px 8px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+td {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+tr:nth-child(even) { background: rgba(27,45,74,0.4); }
+tr:hover { background: rgba(0,163,224,0.08); }
+.price-cell {
+  color: var(--price-color);
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: 14px;
+}
+.price-input {
+  width: 90px;
+  padding: 6px 8px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--price-color);
+  font-weight: 700;
+  border-radius: 4px;
+  font-size: 13px;
+  text-align: right;
+}
+.price-input:focus { outline: none; border-color: var(--accent); }
+.qty-input {
+  width: 56px;
+  padding: 6px 4px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  font-size: 13px;
+  text-align: center;
+}
+.qty-input:focus { outline: none; border-color: var(--accent); }
+.btn-add {
+  padding: 6px 14px;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+.btn-add:hover { background: var(--accent-light); }
+.btn-add.added { background: var(--green); }
+.check-col { width: 36px; text-align: center; }
+.check-col input { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+/* Card view for mobile */
+.card-grid {
+  display: none;
+  gap: 10px;
+}
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  transition: var(--transition);
+}
+.product-card:hover { border-color: var(--accent); }
+.product-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+.product-card .model {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.product-card .card-price {
+  color: var(--price-color);
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+}
+.product-card .specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+.product-card .specs span { white-space: nowrap; }
+.product-card .card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+/* Float cart button */
+.float-cart {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 200;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,163,224,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.float-cart .badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--red);
+  color: #fff;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.float-cart:active { transform: scale(0.95); }
+/* Cart sidebar */
+.cart-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 300;
+}
+.cart-overlay.open { display: block; }
+.cart-panel {
+  position: fixed;
+  top: 0; right: 0;
+  width: 420px;
+  max-width: 100vw;
+  height: 100vh;
+  background: var(--bg-mid);
+  z-index: 301;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+.cart-panel.open { transform: translateX(0); }
+.cart-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-header h3 { color: var(--accent); font-size: 18px; }
+.cart-close {
+  background: none; border: none; color: var(--text-secondary);
+  font-size: 28px; cursor: pointer; width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+.cart-close:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+}
+.cart-item {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+}
+.cart-item .ci-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+.cart-item .ci-name {
+  font-weight: 600;
+  font-size: 13px;
+  flex: 1;
+}
+.cart-item .ci-remove {
+  background: none; border: none; color: var(--red);
+  cursor: pointer; font-size: 18px; width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+.cart-item .ci-remove:hover { background: rgba(255,82,82,0.15); }
+.cart-item .ci-info {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+.cart-item .ci-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cart-item .ci-price {
+  color: var(--price-color);
+  font-weight: 700;
+  font-size: 14px;
+}
+.cart-item .ci-qty-edit {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cart-item .ci-qty-edit button {
+  width: 28px; height: 28px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-item .ci-qty-edit input {
+  width: 44px;
+  padding: 4px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  text-align: center;
+  font-size: 13px;
+}
+.cart-item .ci-subtotal {
+  color: var(--price-color);
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.cart-footer {
+  padding: 16px;
+  border-top: 2px solid var(--accent);
+  background: var(--bg-deep);
+}
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.cart-total .label { font-size: 16px; font-weight: 700; }
+.cart-total .amount {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--price-color);
+}
+.cart-actions {
+  display: flex;
+  gap: 8px;
+}
+.btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: #fff; flex: 1; }
+.btn-primary:hover { background: var(--accent-light); }
+.btn-outline {
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.btn-outline:hover { background: rgba(0,163,224,0.1); }
+.btn-danger { background: var(--red); color: #fff; }
+.btn-danger:hover { background: #FF6D6D; }
+/* Toast */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-weight: 600;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  font-size: 14px;
+}
+.toast.show { opacity: 1; }
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+}
+.empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+/* Responsive */
+@media (max-width: 768px) {
+  .table-wrap { display: none; }
+  .card-grid { display: grid; grid-template-columns: 1fr; }
+  .logo { font-size: 16px; }
+  .nav-tab { font-size: 12px; padding: 8px 10px; }
+  .section-title { font-size: 14px; }
+  .price-input { width: 76px; font-size: 12px; }
+  .qty-input { width: 44px; }
+  .header { padding: 8px 12px; }
+  .page { padding: 12px 8px; }
+  .cart-panel { width: 100vw; }
+  .btn { font-size: 13px; padding: 10px 14px; }
+}
+@media (min-width: 769px) {
+  .card-grid { display: none; }
+  .table-wrap { display: block; }
+}
+/* Combo page */
+.combo-selector {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.combo-selector select {
+  padding: 10px 14px;
+  background: var(--bg-mid);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+  font-size: 14px;
+  min-width: 200px;
+}
+.combo-result {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 12px;
+}
+.combo-result h4 { color: var(--accent); margin-bottom: 8px; }
+.combo-total {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--price-color);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* Discount section */
+.discount-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+.discount-bar .discount-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.discount-bar .discount-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.discount-bar .discount-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.discount-bar .discount-input {
+  width: 70px;
+  padding: 8px 6px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+.discount-bar .discount-input:focus { outline: none; border-color: var(--accent); }
+.discount-bar .discount-unit {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.discount-bar .quick-btns {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.discount-quick {
+  padding: 6px 12px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.discount-quick:hover { border-color: var(--accent); color: var(--text); }
+.discount-quick.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+/* Per-item discount */
+.ci-discount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.ci-discount input {
+  width: 44px;
+  padding: 3px 4px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+.ci-discount input:focus { outline: none; border-color: var(--accent); }
+/* Three-line total */
+.cart-total-block {}
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 13px;
+}
+.cart-total-row.original { color: var(--text-secondary); }
+.cart-total-row.discounted {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--price-color);
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 4px 0;
+}
+.cart-total-row.saved { color: var(--green); font-weight: 600; }
+.cart-total-row .val { font-weight: 700; }
+
+
+/* Global search */
+.global-search {
+  margin-top: 10px;
+  position: relative;
+}
+.global-search input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-deep);
+  border: 2px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+  font-size: 15px;
+  transition: var(--transition);
+}
+.global-search input:focus { outline: none; border-color: var(--accent); }
+.global-search input::placeholder { color: var(--text-secondary); }
+.global-search .search-hint {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.global-search .match-count {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div class="logo">创美机电 <span>| 便携报价系统</span></div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="switchTab('pump')">防汛泵报价</button>
+    <button class="nav-tab" onclick="switchTab('parts')">配件报价</button>
+    <button class="nav-tab" onclick="switchTab('combo')">组合报价</button>
+  </div>
+  <div class="global-search">
+    <input type="text" id="global-search" placeholder="全局搜索型号 / 名称 / 规格...（跨所有分类）" oninput="filterAll()">
+    <div class="search-hint">
+      <span id="search-match-count" class="match-count" style="display:none;"></span>
+      <span id="search-match-text" style="display:none;"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 防汛泵报价页 ====== -->
+<div id="page-pump" class="page active">
+  <div class="search-bar">
+    <input type="text" id="pump-search" placeholder="搜索泵型号..." oninput="filterPumps()">
+    <select id="pump-category-filter" onchange="filterPumps()">
+      <option value="">全部分类</option>
+    </select>
+  </div>
+  <div id="pump-sections"></div>
+</div>
+
+<!-- ====== 配件报价页 ====== -->
+<div id="page-parts" class="page">
+  <div class="search-bar">
+    <input type="text" id="parts-search" placeholder="搜索配件名称..." oninput="filterParts()">
+    <select id="parts-category-filter" onchange="filterParts()">
+      <option value="">全部类型</option>
+    </select>
+  </div>
+  <div id="parts-sections"></div>
+</div>
+
+<!-- ====== 组合报价页 ====== -->
+<div id="page-combo" class="page">
+  <div class="section-title">组合报价</div>
+  <p style="color:var(--text-secondary);margin-bottom:16px;">选择泵型和对应配件，快速生成组合报价单。先在防汛泵和配件页面添加到清单，再切换至此查看。</p>
+  <div class="combo-result">
+    <h4>当前报价清单汇总</h4>
+    <div id="combo-summary"></div>
+    <div class="combo-total" id="combo-total"></div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="copyCart()">一键复制发送微信</button>
+      <button class="btn btn-outline" onclick="clearCart()">清空清单</button>
+    </div>
+  </div>
+</div>
+
+<!-- 购物车浮动按钮 -->
+<button class="float-cart" onclick="toggleCart()">
+  &#128722;
+  <span class="badge" id="cart-badge" style="display:none">0</span>
+</button>
+
+<!-- 购物车面板 -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-panel" id="cart-panel">
+  <div class="cart-header">
+    <h3>报价清单</h3>
+    <button class="cart-close" onclick="closeCart()">&times;</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="discount-bar" id="discount-bar" style="display:none;">
+      <div class="discount-header">
+        <span class="discount-label">整体折扣</span>
+        <span style="font-size:11px;color:var(--text-secondary)">输入100=原价，85=85折</span>
+      </div>
+      <div class="discount-input-row">
+        <input type="number" class="discount-input" id="global-discount" value="100" min="60" max="100" onchange="onGlobalDiscountChange()">
+        <span class="discount-unit">%</span>
+      </div>
+      <div class="quick-btns">
+        <button class="discount-quick" onclick="setQuickDiscount(100)">原价</button>
+        <button class="discount-quick" onclick="setQuickDiscount(95)">95折</button>
+        <button class="discount-quick" onclick="setQuickDiscount(90)">9折</button>
+        <button class="discount-quick" onclick="setQuickDiscount(85)">85折</button>
+        <button class="discount-quick" onclick="setQuickDiscount(80)">8折</button>
+        <button class="discount-quick" onclick="setQuickDiscount(75)">75折</button>
+        <button class="discount-quick" onclick="setQuickDiscount(70)">7折</button>
+        <button class="discount-quick" onclick="setQuickDiscount(65)">65折</button>
+        <button class="discount-quick" onclick="setQuickDiscount(60)">6折</button>
+      </div>
+    </div>
+    <div id="cart-items-area">
+      <div class="empty-state">
+        <div class="icon">&#128203;</div>
+        <p>尚未添加产品</p>
+        <p style="font-size:12px;margin-top:4px;">在产品列表中勾选并输入数量，点击加入清单</p>
+      </div>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-block">
+      <div class="cart-total-row original">
+        <span>原价合计</span>
+        <span class="val" id="cart-original-total">¥0元</span>
+      </div>
+      <div class="cart-total-row discounted">
+        <span>折扣后价格</span>
+        <span class="val" id="cart-discounted-total">¥0元</span>
+      </div>
+      <div class="cart-total-row saved" id="cart-saved-row" style="display:none;">
+        <span>为您节省</span>
+        <span class="val" id="cart-saved-amount">¥0元</span>
+      </div>
+    </div>
+    <div class="cart-actions" style="margin-top:10px;">
+      <button class="btn btn-primary" onclick="copyCart()">一键复制发微信</button>
+      <button class="btn btn-danger" onclick="clearCart()">清空</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ 数据定义 ============
+
+// 防汛泵数据：{category, subcategory, model, flow, head, power, price, note}
+const pumpData = [
+  // ---- 大流量防汛泵（铝合金） ----
+  {cat:"大流量防汛泵", sub:"铝合金", model:"150SZQ250-10-11", flow:"250", head:"10", power:"11", price:17700, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"200SZQ400-8-15", flow:"400", head:"8", power:"15", price:25300, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"200SZQ250-15-18.5", flow:"250", head:"15", power:"18.5", price:26500, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"200SZQ400-10-18.5", flow:"400", head:"10", power:"18.5", price:26500, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"200SZQ500-10-22", flow:"500", head:"10", power:"22", price:28600, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"200SZQ600-8-22", flow:"600", head:"8", power:"22", price:28600, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"200SZQ500-12-27", flow:"500", head:"12", power:"27", price:31900, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"200SZQ600-10-30", flow:"600", head:"10", power:"30", price:34700, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"250SZQ600-12-30", flow:"600", head:"12", power:"30", price:38600, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"250SZQ800-10-37", flow:"800", head:"10", power:"37", price:40400, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"300SZQ1000-8-37", flow:"1000", head:"8", power:"37", price:48200, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"300SZQ1000-10-45", flow:"1000", head:"10", power:"45", price:51800, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"300SZQ1200-10-55", flow:"1200", head:"10", power:"55", price:58900, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"300SZQ1000-15-75", flow:"1000", head:"15", power:"75", price:74400, note:""},
+  {cat:"大流量防汛泵", sub:"铝合金", model:"300SZQ1500-10-75", flow:"1200", head:"10", power:"75", price:74400, note:""},
+
+  // ---- 地铁用高扬程防汛泵（铝合金） ----
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"100SZQ100-25-11", flow:"100", head:"25", power:"11", price:17700, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"150SZQ150-20-15", flow:"150", head:"20", power:"15", price:25300, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"150SZQ150-25-18.5", flow:"150", head:"25", power:"18.5", price:26500, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"150SZQ100-50-22", flow:"100", head:"50", power:"22", price:28600, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"150SZQ150-32-22", flow:"150", head:"32", power:"22", price:28600, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"150SZQ200-25-22", flow:"200", head:"25", power:"22", price:28600, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"150SZQ200-35-30", flow:"200", head:"35", power:"30", price:34700, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"150SZQ200-45-37", flow:"200", head:"45", power:"37", price:40400, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"150SZQ200-55-45", flow:"200", head:"55", power:"45", price:51800, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ300-18-22", flow:"300", head:"18", power:"22", price:28600, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ300-23-30", flow:"300", head:"23", power:"30", price:36500, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ300-30-37", flow:"300", head:"30", power:"37", price:40400, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ300-40-55", flow:"300", head:"40", power:"55", price:58900, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ300-50-75", flow:"300", head:"50", power:"75", price:82900, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ300-80-95", flow:"300", head:"80", power:"95", price:98200, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ400-20-37", flow:"400", head:"20", power:"37", price:40400, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ400-30-55", flow:"400", head:"30", power:"55", price:58900, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ400-40-75", flow:"400", head:"40", power:"75", price:82900, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ400-50-95", flow:"400", head:"50", power:"95", price:98800, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ500-20-45", flow:"500", head:"20", power:"45", price:51800, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ500-25-55", flow:"500", head:"25", power:"55", price:58900, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"200SZQ500-35-75", flow:"500", head:"35", power:"75", price:74400, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"250SZQ600-20-55", flow:"600", head:"25", power:"55", price:58500, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"250SZQ600-30-75", flow:"600", head:"30", power:"75", price:84800, note:""},
+  {cat:"地铁用高扬程防汛泵", sub:"铝合金", model:"250SZQ800-20-75", flow:"800", head:"20", power:"75", price:84300, note:""},
+
+  // ---- 双用泵 ----
+  {cat:"双用泵", sub:"铝合金", model:"200SZQ500/150-10/35-22", flow:"500", head:"10/35", power:"22", price:34500, note:"铝合金内机"},
+  {cat:"双用泵", sub:"铝合金", model:"200SZQ600/150-8/35-22", flow:"600", head:"8/35", power:"22", price:34500, note:""},
+  {cat:"双用泵", sub:"铝合金", model:"200SZQ500/200-10/25-22", flow:"500", head:"10/25", power:"22", price:34500, note:""},
+  {cat:"双用泵", sub:"铝合金", model:"250SZQ600/150-10/45-30", flow:"600", head:"10/45", power:"30", price:43600, note:""},
+  {cat:"双用泵", sub:"铝合金", model:"250SZQ750/300-10/30-37", flow:"750", head:"10/30", power:"37", price:45400, note:""},
+  {cat:"双用泵", sub:"铝合金", model:"300SZQ1000/500-10/20-45", flow:"1000", head:"10/20", power:"45", price:58300, note:""},
+  {cat:"双用泵", sub:"铝合金", model:"300SZQ1200/400-10/30-55", flow:"1200", head:"10/30", power:"55", price:61400, note:""},
+
+  // ---- 下吸式 ----
+  {cat:"下吸式", sub:"铝合金", model:"150SZQ250-8-11", flow:"250", head:"8", power:"11", price:19700, note:"铝合金内机"},
+  {cat:"下吸式", sub:"铝合金", model:"200SZQ500-9-22L", flow:"500", head:"9", power:"22", price:30000, note:""},
+  {cat:"下吸式", sub:"铝合金", model:"200SZQ600-10-30L", flow:"600", head:"10", power:"30", price:40300, note:""},
+  {cat:"下吸式", sub:"铝合金", model:"250SZQ800-9-37L", flow:"800", head:"9", power:"37", price:41800, note:""},
+
+  // ---- 大流量低扬程泵（不锈钢） ----
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"150SZQ100-6-3", flow:"100", head:"6", power:"3", price:13900, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"150SZQ150-6-4", flow:"130", head:"6", power:"4", price:14200, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"150SZQ200-6-5.5", flow:"200", head:"6", power:"5.5", price:14800, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"150SZQ220-7-7.5", flow:"220", head:"7", power:"7.5", price:16200, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"150SZQ250-9-11", flow:"250", head:"9", power:"11", price:18700, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"200SZQ400-8-15", flow:"400", head:"8", power:"15", price:26300, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"200SZQ400-10-18.5", flow:"400", head:"10", power:"18.5", price:27500, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"200SZQ500-10-22", flow:"500", head:"10", power:"22", price:29600, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"200SZQ600-8-22", flow:"600", head:"8", power:"22", price:29600, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"200SZQ500-12-27", flow:"500", head:"12", power:"27", price:32900, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"200SZQ600-10-30", flow:"600", head:"10", power:"30", price:35700, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"250SZQ600-12-30", flow:"600", head:"12", power:"30", price:39600, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"250SZQ800-10-37", flow:"800", head:"10", power:"37", price:41400, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"300SZQ1000-8-37", flow:"1000", head:"8", power:"37", price:46700, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"300SZQ1000-10-45", flow:"1000", head:"10", power:"45", price:53300, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"300SZQ800-15-55", flow:"800", head:"15", power:"55", price:60400, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"300SZQ1200-10-55", flow:"1200", head:"10", power:"55", price:60400, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"300SZQ1000-15-75", flow:"1000", head:"13", power:"65", price:84900, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"300SZQ1500-10-75", flow:"1000", head:"13", power:"65", price:84900, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"400SZQ2000-10-90", flow:"2000", head:"10", power:"90", price:108500, note:""},
+  {cat:"大流量低扬程泵", sub:"不锈钢", model:"400SZQ2000-15-135", flow:"2000", head:"15", power:"135", price:155200, note:""},
+
+  // ---- 高扬程防汛泵（不锈钢） ----
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"100SZQ60-15-4", flow:"60", head:"15", power:"4", price:14200, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"100SZQ80-16-5.5", flow:"80", head:"16", power:"5.5", price:14800, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"100SZQ80-20-7.5", flow:"80", head:"20", power:"7.5", price:16200, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"100SZQ100-20-9", flow:"100", head:"20", power:"9", price:17200, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"100SZQ100-25-11", flow:"100", head:"25", power:"11", price:18700, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ150-20-15", flow:"150", head:"20", power:"15", price:26300, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ150-25-18.5", flow:"150", head:"25", power:"18.5", price:27500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ100-50-22", flow:"100", head:"50", power:"22", price:30500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"100SZQ100-100-45", flow:"100", head:"100", power:"45", price:55300, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"100SZQ100-160-75", flow:"100", head:"160", power:"75", price:86800, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ150-32-22", flow:"150", head:"32", power:"22", price:29600, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ200-25-22", flow:"200", head:"25", power:"22", price:29600, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ200-35-30", flow:"200", head:"35", power:"30", price:35700, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ200-45-37", flow:"200", head:"45", power:"37", price:41400, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ200-55-45", flow:"200", head:"55", power:"45", price:54500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ200-90-75", flow:"200", head:"90", power:"75", price:86800, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ200-100-95", flow:"200", head:"100", power:"95", price:101300, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ200-150-135", flow:"200", head:"150", power:"135", price:158600, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ200-200-175", flow:"200", head:"200", power:"175", price:188700, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"150SZQ200-250-220", flow:"200", head:"250", power:"220", price:248900, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ300-18-22", flow:"300", head:"18", power:"22", price:29600, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ300-23-30", flow:"300", head:"23", power:"30", price:37500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ300-30-37", flow:"300", head:"30", power:"37", price:41400, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ300-40-55", flow:"300", head:"40", power:"55", price:60400, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ300-50-75", flow:"300", head:"50", power:"75", price:89400, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ300-80-95", flow:"300", head:"80", power:"95", price:106700, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ300-100-135", flow:"300", head:"100", power:"130", price:158000, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ300-150-200", flow:"300", head:"150", power:"200", price:232100, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ300-200-270", flow:"300", head:"200", power:"270", price:290200, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ300-250-330", flow:"300", head:"250", power:"330", price:329100, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ400-20-37", flow:"400", head:"20", power:"37", price:41400, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ400-30-55", flow:"400", head:"30", power:"55", price:60400, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ400-40-75", flow:"400", head:"40", power:"75", price:86800, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ400-50-95", flow:"400", head:"50", power:"95", price:107700, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ400-60-110", flow:"400", head:"60", power:"110", price:125200, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ400-100-175", flow:"400", head:"100", power:"175", price:197800, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ400-130-220", flow:"400", head:"130", power:"220", price:257600, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ400-150-255", flow:"400", head:"150", power:"255", price:285500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ500-20-45", flow:"500", head:"20", power:"45", price:54500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ500-25-55", flow:"500", head:"25", power:"55", price:60400, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ500-35-75", flow:"500", head:"35", power:"75", price:86400, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ500-40-95", flow:"500", head:"40", power:"95", price:105700, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ500-50-110", flow:"500", head:"50", power:"110", price:128800, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ500-60-130", flow:"500", head:"60", power:"130", price:148500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ500-80-175", flow:"500", head:"80", power:"175", price:192300, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"200SZQ500-100-200", flow:"500", head:"100", power:"200", price:235500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ600-20-55", flow:"600", head:"25", power:"55", price:60400, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ600-30-75", flow:"600", head:"30", power:"75", price:86500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ600-50-130", flow:"600", head:"50", power:"130", price:148500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ600-70-175", flow:"600", head:"70", power:"175", price:195800, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ600-80-200", flow:"600", head:"80", power:"200", price:235800, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ600-100-255", flow:"600", head:"100", power:"255", price:291200, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ800-20-75", flow:"800", head:"20", power:"75", price:86500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQQ800-30-110", flow:"800", head:"30", power:"110", price:128200, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ800-40-135", flow:"800", head:"40", power:"135", price:152600, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ800-50-175", flow:"800", head:"50", power:"175", price:192300, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ800-60-200", flow:"800", head:"60", power:"200", price:235500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ800-70-235", flow:"800", head:"70", power:"235", price:249900, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"250SZQ800-80-275", flow:"800", head:"80", power:"275", price:290200, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"300SZQ1000-30-135", flow:"1000", head:"30", power:"135", price:152600, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"300SZQ1000-40-175", flow:"1000", head:"40", power:"175", price:192300, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"300SZQ1000-50-210", flow:"1000", head:"50", power:"210", price:242500, note:""},
+  {cat:"高扬程防汛泵", sub:"不锈钢", model:"300SZQ1000-60-255", flow:"1000", head:"60", power:"255", price:291200, note:""},
+
+  // ---- 双用泵（备用价格/不锈钢版） ----
+  {cat:"双用泵", sub:"不锈钢", model:"200SZQ500/150-10/35-22", flow:"500", head:"10/35", power:"22", price:35500, note:"不锈钢版"},
+  {cat:"双用泵", sub:"不锈钢", model:"200SZQ600/150-8/35-22", flow:"600", head:"8/35", power:"22", price:35500, note:"不锈钢版"},
+  {cat:"双用泵", sub:"不锈钢", model:"200SZQ500/200-10/25-22", flow:"500", head:"10/25", power:"22", price:35500, note:"不锈钢版"},
+  {cat:"双用泵", sub:"不锈钢", model:"250SZQ600/150-10/45-30", flow:"600", head:"10/45", power:"30", price:44600, note:"不锈钢版"},
+  {cat:"双用泵", sub:"不锈钢", model:"250SZQ750/300-10/30-37", flow:"750", head:"10/30", power:"37", price:46400, note:"不锈钢版"},
+  {cat:"双用泵", sub:"不锈钢", model:"300SZQ1000/500-10/20-45", flow:"1000", head:"10/20", power:"45", price:61300, note:"不锈钢版"},
+  {cat:"双用泵", sub:"不锈钢", model:"300SZQ1200/400-10/30-55", flow:"1200", head:"10/30", power:"55", price:64400, note:"不锈钢版"},
+
+  // ---- 下吸式（备用价格/不锈钢版） ----
+  {cat:"下吸式", sub:"不锈钢", model:"150SZQ250-8-11", flow:"250", head:"8", power:"11", price:19700, note:"不锈钢版"},
+  {cat:"下吸式", sub:"不锈钢", model:"200SZQ500-9-22L", flow:"500", head:"9", power:"22", price:32000, note:"不锈钢版"},
+  {cat:"下吸式", sub:"不锈钢", model:"200SZQ600-10-30L", flow:"600", head:"10", power:"30", price:43100, note:"不锈钢版"},
+  {cat:"下吸式", sub:"不锈钢", model:"250SZQ800-9-37L", flow:"800", head:"9", power:"37", price:45200, note:"不锈钢版"}
+];
+
+// 配件数据
+const partsData = [
+  // 消防水带
+  {cat:"消防水带", name:"消防水带（工作压力0.8-1.0MPa）", spec:"10寸", unit:"米", price:55, note:"厚度2.0mm 天台优级"},
+  {cat:"消防水带", name:"防爆消防水带（≥1MPa）", spec:"12寸", unit:"米", price:68, note:"超强涤纶长丝 五行品牌"},
+  // 工业插头 63A
+  {cat:"工业插头", name:"工业插头63A 四插(0342)", spec:"63A", unit:"只", price:75, note:"0.64kg"},
+  {cat:"工业插头", name:"工业插头63A 四插(2342)", spec:"63A", unit:"只", price:94, note:"0.78kg"},
+  {cat:"工业插头", name:"工业插头63A 五插(0352)", spec:"63A", unit:"只", price:85, note:"0.66kg"},
+  {cat:"工业插头", name:"工业插头63A 五插(2352)", spec:"63A", unit:"只", price:98, note:"0.82kg"},
+  {cat:"工业插头", name:"工业插头63A 四插(3342)", spec:"63A", unit:"只", price:76, note:"0.56kg"},
+  {cat:"工业插头", name:"工业插头63A 五插(3352)", spec:"63A", unit:"只", price:90, note:"0.62kg"},
+  // 工业插头 125A
+  {cat:"工业插头", name:"工业插头125A 四插(0442)", spec:"125A", unit:"只", price:243, note:"0.94kg"},
+  {cat:"工业插头", name:"工业插头125A 四插(2442)", spec:"125A", unit:"只", price:268, note:"1.07kg"},
+  {cat:"工业插头", name:"工业插头125A 五插(0452)", spec:"125A", unit:"只", price:269, note:"1.04kg"},
+  {cat:"工业插头", name:"工业插头125A 五插(2452)", spec:"125A", unit:"只", price:294, note:"1.26kg"},
+  {cat:"工业插头", name:"工业插头125A 四插(3442)", spec:"125A", unit:"只", price:238, note:"0.96kg"},
+  {cat:"工业插头", name:"工业插头125A 五插(3452)", spec:"125A", unit:"只", price:279, note:"1.06kg"},
+  // 工业插头 200A
+  {cat:"工业插头", name:"工业插头200A 四插(0542)", spec:"200A", unit:"只", price:2145, note:"4kg"},
+  {cat:"工业插头", name:"工业插头200A 四插连接器(2542)", spec:"200A", unit:"只", price:2416, note:"4kg"},
+  {cat:"工业插头", name:"工业插头200A 五插(0552)", spec:"200A", unit:"只", price:2332, note:"4.3kg"},
+  {cat:"工业插头", name:"工业插头200A 五插连接器(2552)", spec:"200A", unit:"只", price:2645, note:"4.3kg"},
+  {cat:"工业插头", name:"工业插头200A 四插(3542)", spec:"200A", unit:"只", price:2255, note:"3.8kg"},
+  {cat:"工业插头", name:"工业插头200A 五插(3552)", spec:"200A", unit:"只", price:2430, note:"4.2kg"},
+  // 泵头
+  {cat:"泵头", name:"泵头 6寸不锈钢", spec:"6寸", unit:"只", price:680, note:"2.65kg"},
+  {cat:"泵头", name:"泵头 8寸铝合金", spec:"8寸", unit:"只", price:780, note:"2.33kg"},
+  {cat:"泵头", name:"泵头 8寸不锈钢", spec:"8寸", unit:"只", price:1000, note:"3.55kg"},
+  {cat:"泵头", name:"泵头 10寸铝合金", spec:"10寸", unit:"只", price:1150, note:"4.6kg"},
+  {cat:"泵头", name:"泵头 10寸不锈钢", spec:"10寸", unit:"只", price:1500, note:"6.65kg"},
+  {cat:"泵头", name:"泵头 12寸铝合金", spec:"12寸", unit:"只", price:1950, note:"6.12kg"},
+  {cat:"泵头", name:"泵头 12寸不锈钢", spec:"12寸", unit:"只", price:2600, note:"9.15kg"},
+  // 叶轮
+  {cat:"叶轮", name:"叶轮 6寸不锈钢", spec:"6寸", unit:"只", price:580, note:"0.92kg"},
+  {cat:"叶轮", name:"叶轮 8寸不锈钢", spec:"8寸", unit:"只", price:800, note:"1.37kg"},
+  {cat:"叶轮", name:"叶轮 10寸不锈钢", spec:"10寸", unit:"只", price:1200, note:"2.52kg"},
+  {cat:"叶轮", name:"叶轮 12寸不锈钢", spec:"12寸", unit:"只", price:1800, note:"3.91kg"},
+  // 网罩
+  {cat:"网罩", name:"网罩 6寸", spec:"6寸", unit:"套", price:300, note:""},
+  {cat:"网罩", name:"网罩 8寸", spec:"8寸", unit:"套", price:350, note:""},
+  {cat:"网罩", name:"网罩 10寸", spec:"10寸", unit:"套", price:450, note:""},
+  {cat:"网罩", name:"网罩 12寸", spec:"12寸", unit:"套", price:600, note:""},
+  // 接力泵机筒
+  {cat:"接力泵机筒", name:"接力泵机筒 8寸", spec:"8寸", unit:"只", price:2900, note:""},
+  {cat:"接力泵机筒", name:"接力泵机筒 10寸", spec:"10寸", unit:"只", price:3800, note:""},
+  {cat:"接力泵机筒", name:"接力泵机筒 12寸", spec:"12寸", unit:"只", price:5300, note:""},
+  // 电缆线不锈钢护套
+  {cat:"电缆线不锈钢护套", name:"电缆线不锈钢护套 6寸", spec:"6寸", unit:"只", price:50, note:""},
+  {cat:"电缆线不锈钢护套", name:"电缆线不锈钢护套 8寸", spec:"8寸", unit:"只", price:60, note:""},
+  {cat:"电缆线不锈钢护套", name:"电缆线不锈钢护套 10寸", spec:"10寸", unit:"只", price:80, note:""},
+  {cat:"电缆线不锈钢护套", name:"电缆线不锈钢护套 12寸", spec:"12寸", unit:"只", price:100, note:""},
+  // 机械油封
+  {cat:"机械油封", name:"机械油封 6寸", spec:"6寸", unit:"只", price:120, note:""},
+  {cat:"机械油封", name:"机械油封 8寸", spec:"8寸", unit:"只", price:150, note:""},
+  {cat:"机械油封", name:"机械油封 10寸", spec:"10寸", unit:"只", price:150, note:""},
+  {cat:"机械油封", name:"机械油封 12寸", spec:"12寸", unit:"只", price:200, note:""},
+  // 连接
+  {cat:"连接件", name:"连接 6寸不锈钢（一体式）", spec:"6寸", unit:"只", price:0, note:"右侧上图"},
+  {cat:"连接件", name:"连接 8寸铝合金", spec:"8寸", unit:"只", price:500, note:""},
+  {cat:"连接件", name:"连接 8寸不锈钢", spec:"8寸", unit:"只", price:1260, note:""},
+  {cat:"连接件", name:"连接 10寸不锈钢", spec:"10寸", unit:"只", price:1650, note:""},
+  {cat:"连接件", name:"连接 12寸不锈钢", spec:"12寸", unit:"只", price:3500, note:""},
+  // 出水口卡箍
+  {cat:"出水口卡箍", name:"出水口卡箍(不锈钢) 4寸", spec:"4寸", unit:"只", price:38, note:"0.32kg"},
+  {cat:"出水口卡箍", name:"出水口卡箍(不锈钢) 6寸", spec:"6寸", unit:"只", price:65, note:"0.53kg"},
+  {cat:"出水口卡箍", name:"出水口卡箍(不锈钢) 8寸", spec:"8寸", unit:"只", price:85, note:"0.83kg"},
+  {cat:"出水口卡箍", name:"出水口卡箍(不锈钢) 10寸", spec:"10寸", unit:"只", price:124, note:"1.21kg"},
+  {cat:"出水口卡箍", name:"出水口卡箍(不锈钢) 12寸", spec:"12寸", unit:"只", price:169, note:"1.78kg"},
+  // 钢制水带扣
+  {cat:"钢制水带扣", name:"钢制水带扣 6寸", spec:"6寸", unit:"只", price:8, note:"0.31kg"},
+  {cat:"钢制水带扣", name:"钢制水带扣 8寸", spec:"8寸", unit:"只", price:15, note:"0.35kg"},
+  {cat:"钢制水带扣", name:"钢制水带扣 10寸", spec:"10寸", unit:"只", price:18, note:"0.42kg"},
+  {cat:"钢制水带扣", name:"钢制水带扣 12寸", spec:"12寸", unit:"只", price:25, note:"0.48kg"},
+  // 水带对接头
+  {cat:"水带对接头", name:"水带对接头(不锈钢) 6寸", spec:"6寸", unit:"副", price:650, note:"2.64kg/套 带卡箍"},
+  {cat:"水带对接头", name:"水带对接头(不锈钢) 8寸", spec:"8寸", unit:"副", price:800, note:"3.45kg/套 带卡箍"},
+  {cat:"水带对接头", name:"水带对接头(不锈钢) 10寸", spec:"10寸", unit:"副", price:1000, note:"5.26kg/套 带卡箍"},
+  {cat:"水带对接头", name:"水带对接头(不锈钢) 12寸", spec:"12寸", unit:"副", price:1250, note:"9.23kg/套 带卡箍"},
+  {cat:"水带对接头", name:"水带对接头(不锈钢B级) 8寸", spec:"8寸", unit:"副", price:450, note:"B级质量"},
+  {cat:"水带对接头", name:"水带对接头(不锈钢A级) 8寸", spec:"8寸", unit:"副", price:600, note:"A级质量"},
+  {cat:"水带对接头", name:"水带对接头(不锈钢) 10寸", spec:"10寸", unit:"副", price:850, note:""},
+  {cat:"水带对接头", name:"水带对接头(不锈钢) 12寸", spec:"12寸", unit:"副", price:1050, note:""},
+  // 转口径接头
+  {cat:"转口径接头", name:"转口径接头 4寸转6寸", spec:"4/6寸", unit:"只", price:380, note:""},
+  {cat:"转口径接头", name:"转口径接头 6寸转8寸", spec:"6/8寸", unit:"只", price:480, note:""},
+  {cat:"转口径接头", name:"转口径接头 8寸转10寸", spec:"8/10寸", unit:"只", price:750, note:""},
+  {cat:"转口径接头", name:"转口径接头 8寸转12寸", spec:"8/12寸", unit:"只", price:1260, note:""},
+  {cat:"转口径接头", name:"转口径接头 10寸转12寸", spec:"10/12寸", unit:"只", price:1350, note:""},
+  // 不锈钢水带扣
+  {cat:"不锈钢水带扣", name:"不锈钢水带扣(带橡胶条) 4寸", spec:"4寸", unit:"只", price:15, note:"0.15kg"},
+  {cat:"不锈钢水带扣", name:"不锈钢水带扣(带橡胶条) 6寸", spec:"6寸", unit:"只", price:17, note:"0.23kg"},
+  {cat:"不锈钢水带扣", name:"不锈钢水带扣(带橡胶条) 8寸", spec:"8寸", unit:"只", price:20, note:"0.30kg"},
+  {cat:"不锈钢水带扣", name:"不锈钢水带扣(带橡胶条) 10寸", spec:"10寸", unit:"只", price:25, note:"0.36kg"},
+  {cat:"不锈钢水带扣", name:"不锈钢水带扣(带橡胶条) 12寸", spec:"12寸", unit:"只", price:34, note:"0.44kg"},
+  // 轴流泵底盖
+  {cat:"轴流泵底盖", name:"轴流泵底盖(铝制) 8寸", spec:"8寸", unit:"只", price:170, note:"0.73kg"},
+  {cat:"轴流泵底盖", name:"轴流泵底盖(铝制) 10寸", spec:"10寸", unit:"只", price:220, note:"0.98kg"},
+  {cat:"轴流泵底盖", name:"轴流泵底盖(铝制) 12寸", spec:"12寸", unit:"只", price:560, note:"1.62kg"},
+  {cat:"轴流泵底盖", name:"轴流泵底盖(不锈钢) 8寸", spec:"8寸", unit:"只", price:420, note:"1.82kg"},
+  {cat:"轴流泵底盖", name:"轴流泵底盖(不锈钢) 10寸", spec:"10寸", unit:"只", price:850, note:"2.98kg"},
+  {cat:"轴流泵底盖", name:"轴流泵底盖(不锈钢) 12寸", spec:"12寸", unit:"只", price:780, note:"2.42kg"},
+  // 轴流泵浮体
+  {cat:"轴流泵浮体", name:"轴流泵浮体 8寸铝合金(浮力35kg)", spec:"8寸", unit:"只", price:280, note:"4.5kg"},
+  {cat:"轴流泵浮体", name:"轴流泵浮体 8-10寸(浮力78kg)", spec:"8-10寸", unit:"只", price:350, note:"6.5kg"},
+  {cat:"轴流泵浮体", name:"轴流泵浮体 12寸(浮力120kg)", spec:"12寸", unit:"只", price:550, note:"12.5kg"},
+  {cat:"轴流泵浮体", name:"轴流泵浮体 浮球(浮力30kg)", spec:"浮球", unit:"只", price:190, note:"4kg"},
+  // 消防快接
+  {cat:"消防快接", name:"德式三抓内螺纹接头 4寸", spec:"4寸", unit:"只", price:70, note:"0.67kg"},
+  {cat:"消防快接", name:"德式三抓内螺纹接头 6寸", spec:"6寸", unit:"只", price:210, note:"1.7kg"},
+  {cat:"消防快接", name:"德式三抓内螺纹接头 8寸", spec:"8寸", unit:"只", price:350, note:"2.8kg"},
+  {cat:"消防快接", name:"德式三抓内螺纹接头 10寸", spec:"10寸", unit:"只", price:460, note:"3.5kg"},
+  {cat:"消防快接", name:"德式三抓内螺纹接头 12寸", spec:"12寸", unit:"只", price:630, note:"4.6kg"},
+  {cat:"消防快接", name:"德式自锁单接口接头 4寸", spec:"4寸", unit:"只", price:320, note:"3.3kg"},
+  {cat:"消防快接", name:"德式自锁单接口接头 6寸", spec:"6寸", unit:"只", price:600, note:"7.2kg"},
+  {cat:"消防快接", name:"德式自锁单接口接头 8寸", spec:"8寸", unit:"只", price:1150, note:"12.5kg"},
+  {cat:"消防快接", name:"德式自锁单接口接头 10寸", spec:"10寸", unit:"只", price:1750, note:"18kg"},
+  {cat:"消防快接", name:"德式自锁单接口接头 12寸", spec:"12寸", unit:"只", price:2280, note:"24kg"},
+  // 接线盒
+  {cat:"接线盒", name:"接线盒 6寸不锈钢", spec:"6寸", unit:"只", price:200, note:"0.27kg"},
+  {cat:"接线盒", name:"接线盒 8寸不锈钢", spec:"8寸", unit:"只", price:280, note:"0.68kg"},
+  {cat:"接线盒", name:"接线盒 16平方不锈钢", spec:"16平方", unit:"只", price:260, note:"0.58kg"},
+  {cat:"接线盒", name:"接线盒 25平方不锈钢", spec:"25平方", unit:"只", price:280, note:"0.86kg"},
+  {cat:"接线盒", name:"接线盒 1500方不锈钢", spec:"1500方", unit:"只", price:320, note:"1.1kg"},
+  {cat:"接线盒", name:"接线盒 8寸铝接线盒", spec:"8寸", unit:"只", price:180, note:"0.25kg"},
+  {cat:"接线盒", name:"接线盒 12寸一体式铝", spec:"12寸", unit:"只", price:220, note:"0.39kg"}
+];
+
+// ============ 全局状态 ============
+let cart = []; // {id, type:'pump'|'part', name, model, spec, unit, price, qty, note, discount}
+let currentTab = 'pump';
+let globalDiscount = 100; // 整体折扣，100=原价
+
+function fmtPrice(p) { return '¥' + p.toLocaleString('zh-CN') + '元'; }
+
+// ============ 渲染水泵 ============
+function getPumpCategories() {
+  const cats = [...new Set(pumpData.map(p=>p.cat))];
+  return cats;
+}
+
+function buildPumpSections() {
+  const container = document.getElementById('pump-sections');
+  const cats = getPumpCategories();
+  const sel = document.getElementById('pump-category-filter');
+  sel.innerHTML = '<option value="">全部分类</option>';
+  cats.forEach(c => { sel.innerHTML += `<option value="${c}">${c}</option>`; });
+
+  let html = '';
+  cats.forEach(cat => {
+    const items = pumpData.filter(p => p.cat === cat);
+    html += `<div class="section" data-cat="${cat}">`;
+    html += `<div class="section-title">${cat} <span class="count">${items.length}款</span></div>`;
+    // 表格
+    html += `<div class="table-wrap"><table><thead><tr>
+      <th class="check-col">选</th><th>型号</th><th>流量(m³/h)</th><th>扬程(m)</th><th>功率(kW)</th><th>材质</th><th>参考价格</th><th>修改单价</th><th>数量</th><th>操作</th></tr></thead><tbody>`;
+    items.forEach((p, i) => {
+      const id = `pump_${cat}_${i}`;
+      html += `<tr data-search="${p.model} ${p.cat} ${p.sub} ${p.note}">
+        <td class="check-col"><input type="checkbox" id="chk_${id}" onchange="onPumpCheck('${id}')"></td>
+        <td><strong>${p.model}</strong></td>
+        <td>${p.flow}</td><td>${p.head}</td><td>${p.power}</td><td>${p.sub}</td>
+        <td class="price-cell">${fmtPrice(p.price)}</td>
+        <td><input type="number" class="price-input" id="price_${id}" value="${p.price}" onchange="onPriceChange('${id}')"></td>
+        <td><input type="number" class="qty-input" id="qty_${id}" value="1" min="1"></td>
+        <td><button class="btn-add" id="btn_${id}" onclick="addPumpToCart('${id}')">加入清单</button></td>
+      </tr>`;
+    });
+    html += `</tbody></table></div>`;
+    // 卡片
+    html += `<div class="card-grid">`;
+    items.forEach((p, i) => {
+      const id = `pump_${cat}_${i}`;
+      html += `<div class="product-card" data-search="${p.model} ${p.cat} ${p.sub}">
+        <div class="card-header">
+          <div class="model">${p.model}</div>
+          <div class="card-price">${fmtPrice(p.price)}</div>
+        </div>
+        <div class="specs">
+          <span>流量:${p.flow}m³/h</span><span>扬程:${p.head}m</span><span>功率:${p.power}kW</span><span>${p.sub}</span>
+        </div>
+        <div class="card-actions">
+          <input type="number" class="price-input" id="price_m_${id}" value="${p.price}" onchange="syncPrice('${id}')">
+          <input type="number" class="qty-input" id="qty_m_${id}" value="1" min="1">
+          <button class="btn-add" id="btn_m_${id}" onclick="addPumpMobile('${id}')">加入清单</button>
+        </div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+  container.innerHTML = html;
+}
+
+function syncPrice(id) {
+  document.getElementById('price_'+id).value = document.getElementById('price_m_'+id).value;
+}
+
+function onPriceChange(id) {
+  const v = document.getElementById('price_'+id).value;
+  const mv = document.getElementById('price_m_'+id);
+  if (mv) mv.value = v;
+}
+
+function onPumpCheck(id) {
+  // 高亮行
+}
+
+function addPumpToCart(id) {
+  const parts = id.split('_');
+  const catIdx = parseInt(parts[2]);
+  const cat = parts[1];
+  const items = pumpData.filter(p => p.cat === cat);
+  const item = items[catIdx];
+  if (!item) return;
+  const qty = parseInt(document.getElementById('qty_'+id).value) || 1;
+  const price = parseInt(document.getElementById('price_'+id).value) || item.price;
+  addToCart({
+    id: id,
+    type: 'pump',
+    name: item.model,
+    model: item.model,
+    spec: `${item.flow}m³/h / ${item.head}m / ${item.power}kW / ${item.sub}`,
+    unit: '套',
+    price: price,
+    qty: qty,
+    note: item.note || item.cat
+  });
+  document.getElementById('btn_'+id).classList.add('added');
+  document.getElementById('btn_'+id).textContent = '已加入';
+  const mb = document.getElementById('btn_m_'+id);
+  if (mb) { mb.classList.add('added'); mb.textContent = '已加入'; }
+  showToast('已加入报价清单');
+}
+
+function addPumpMobile(id) {
+  syncPrice(id);
+  document.getElementById('qty_'+id).value = document.getElementById('qty_m_'+id).value;
+  addPumpToCart(id);
+}
+
+// ============ 渲染配件 ============
+function getPartsCategories() {
+  return [...new Set(partsData.map(p=>p.cat))];
+}
+
+function buildPartsSections() {
+  const container = document.getElementById('parts-sections');
+  const cats = getPartsCategories();
+  const sel = document.getElementById('parts-category-filter');
+  sel.innerHTML = '<option value="">全部类型</option>';
+  cats.forEach(c => { sel.innerHTML += `<option value="${c}">${c}</option>`; });
+
+  let html = '';
+  cats.forEach(cat => {
+    const items = partsData.filter(p => p.cat === cat);
+    html += `<div class="section" data-cat="${cat}">`;
+    html += `<div class="section-title">${cat} <span class="count">${items.length}款</span></div>`;
+    html += `<div class="table-wrap"><table><thead><tr>
+      <th class="check-col">选</th><th>名称</th><th>规格</th><th>单位</th><th>参考价格</th><th>修改单价</th><th>数量</th><th>备注</th><th>操作</th></tr></thead><tbody>`;
+    items.forEach((p, i) => {
+      const id = `part_${cat}_${i}`;
+      html += `<tr data-search="${p.name} ${p.cat} ${p.spec} ${p.note}">
+        <td class="check-col"><input type="checkbox"></td>
+        <td>${p.name}</td><td>${p.spec}</td><td>${p.unit}</td>
+        <td class="price-cell">${fmtPrice(p.price)}</td>
+        <td><input type="number" class="price-input" id="price_${id}" value="${p.price}"></td>
+        <td><input type="number" class="qty-input" id="qty_${id}" value="1" min="1"></td>
+        <td style="font-size:11px;color:var(--text-secondary)">${p.note}</td>
+        <td><button class="btn-add" id="btn_${id}" onclick="addPartToCart('${id}')">加入清单</button></td>
+      </tr>`;
+    });
+    html += `</tbody></table></div>`;
+    // 卡片
+    html += `<div class="card-grid">`;
+    items.forEach((p, i) => {
+      const id = `part_${cat}_${i}`;
+      html += `<div class="product-card" data-search="${p.name} ${p.cat}">
+        <div class="card-header">
+          <div class="model">${p.name}</div>
+          <div class="card-price">${fmtPrice(p.price)}</div>
+        </div>
+        <div class="specs"><span>规格:${p.spec}</span><span>单位:${p.unit}</span></div>
+        <div class="card-actions">
+          <input type="number" class="price-input" id="price_m_${id}" value="${p.price}" onchange="syncPricePart('${id}')">
+          <input type="number" class="qty-input" id="qty_m_${id}" value="1" min="1">
+          <button class="btn-add" id="btn_m_${id}" onclick="addPartMobile('${id}')">加入清单</button>
+        </div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+  container.innerHTML = html;
+}
+
+function syncPricePart(id) {
+  document.getElementById('price_'+id).value = document.getElementById('price_m_'+id).value;
+}
+
+function addPartToCart(id) {
+  const parts = id.split('_');
+  const cat = parts[1];
+  const idx = parseInt(parts[2]);
+  const items = partsData.filter(p => p.cat === cat);
+  const item = items[idx];
+  if (!item) return;
+  const qty = parseInt(document.getElementById('qty_'+id).value) || 1;
+  const price = parseInt(document.getElementById('price_'+id).value) || item.price;
+  addToCart({
+    id: id,
+    type: 'part',
+    name: item.name,
+    spec: item.spec,
+    unit: item.unit,
+    price: price,
+    qty: qty,
+    note: item.note || item.cat
+  });
+  document.getElementById('btn_'+id).classList.add('added');
+  document.getElementById('btn_'+id).textContent = '已加入';
+  const mb = document.getElementById('btn_m_'+id);
+  if (mb) { mb.classList.add('added'); mb.textContent = '已加入'; }
+  showToast('已加入报价清单');
+}
+
+function addPartMobile(id) {
+  syncPricePart(id);
+  document.getElementById('qty_'+id).value = document.getElementById('qty_m_'+id).value;
+  addPartToCart(id);
+}
+
+// ============ 购物车 ============
+function addToCart(item) {
+  const exist = cart.find(c => c.id === item.id);
+  if (exist) {
+    exist.qty += item.qty;
+    exist.price = item.price;
+    if (!exist.discount) exist.discount = globalDiscount;
+  } else {
+    cart.push({...item, discount: globalDiscount});
+  }
+  updateCart();
+}
+
+function removeFromCart(idx) {
+  cart.splice(idx, 1);
+  updateCart();
+}
+
+function updateCartQty(idx, delta) {
+  cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+  updateCart();
+}
+
+function updateCartQtyInput(idx, input) {
+  const v = parseInt(input.value);
+  if (v > 0) cart[idx].qty = v;
+  updateCart();
+}
+
+function updateCart() {
+  const badge = document.getElementById('cart-badge');
+  const itemsArea = document.getElementById('cart-items-area');
+  const discountBar = document.getElementById('discount-bar');
+  const origTotalEl = document.getElementById('cart-original-total');
+  const discTotalEl = document.getElementById('cart-discounted-total');
+  const savedRow = document.getElementById('cart-saved-row');
+  const savedAmt = document.getElementById('cart-saved-amount');
+  const gdInput = document.getElementById('global-discount');
+  const comboSummary = document.getElementById('combo-summary');
+  const comboTotal = document.getElementById('combo-total');
+
+  if (cart.length === 0) {
+    itemsArea.innerHTML = `<div class="empty-state"><div class="icon">&#128203;</div><p>尚未添加产品</p><p style="font-size:12px;margin-top:4px;">在产品列表中勾选并输入数量，点击加入清单</p></div>`;
+    discountBar.style.display = 'none';
+    badge.style.display = 'none';
+    origTotalEl.textContent = '¥0元';
+    discTotalEl.textContent = '¥0元';
+    savedRow.style.display = 'none';
+    if (comboSummary) comboSummary.innerHTML = '<p style="color:var(--text-secondary)">请先在防汛泵和配件页面添加产品</p>';
+    if (comboTotal) comboTotal.textContent = '合计：¥0元';
+    return;
+  }
+
+  discountBar.style.display = 'block';
+  if (gdInput) gdInput.value = globalDiscount;
+  updateQuickBtns();
+
+  badge.style.display = 'flex';
+  badge.textContent = cart.reduce((s, c) => s + c.qty, 0);
+
+  // 确保所有 cart 项有 discount 字段
+  cart.forEach(item => { if (!item.discount) item.discount = globalDiscount; });
+
+  // 计算总价
+  let originalTotal = 0;
+  let discountedTotal = 0;
+  cart.forEach(item => {
+    const orig = item.price * item.qty;
+    originalTotal += orig;
+    discountedTotal += Math.round(orig * item.discount / 100);
+  });
+
+  // 渲染购物车列表
+  let html = '';
+  cart.forEach((item, idx) => {
+    const origSubtotal = item.price * item.qty;
+    const discSubtotal = Math.round(origSubtotal * item.discount / 100);
+    const typeLabel = item.type === 'pump' ? '泵' : '配件';
+    const discLabel = item.discount < 100 ? ` ${item.discount}折` : '';
+    html += `<div class="cart-item">
+      <div class="ci-top">
+        <div class="ci-name">[${typeLabel}] ${item.name}</div>
+        <button class="ci-remove" onclick="removeFromCart(${idx})">&times;</button>
+      </div>
+      <div class="ci-info">${item.spec || item.note || ''}</div>
+      <div class="ci-bottom">
+        <div class="ci-price">${fmtPrice(item.price)} / ${item.unit||'套'}</div>
+        <div class="ci-discount">
+          折扣 <input type="number" value="${item.discount}" min="60" max="100" onchange="onItemDiscountChange(${idx}, this)"> %
+        </div>
+        <div class="ci-qty-edit">
+          <button onclick="updateCartQty(${idx}, -1)">-</button>
+          <input type="number" value="${item.qty}" min="1" onchange="updateCartQtyInput(${idx}, this)">
+          <button onclick="updateCartQty(${idx}, 1)">+</button>
+        </div>
+        <div class="ci-subtotal">${fmtPrice(origSubtotal)}${discLabel} → ${fmtPrice(discSubtotal)}</div>
+      </div>
+    </div>`;
+  });
+  itemsArea.innerHTML = html;
+
+  // 更新底部总价
+  origTotalEl.textContent = fmtPrice(originalTotal);
+  discTotalEl.textContent = fmtPrice(discountedTotal);
+  if (globalDiscount < 100 || cart.some(c => c.discount < 100)) {
+    savedRow.style.display = 'flex';
+    savedAmt.textContent = fmtPrice(originalTotal - discountedTotal);
+  } else {
+    savedRow.style.display = 'none';
+  }
+
+  // 更新组合报价页
+  if (comboSummary) {
+    let cs = '<table style="width:100%;font-size:13px;border-collapse:collapse;">';
+    cs += '<tr style="border-bottom:1px solid var(--border);color:var(--accent)"><th style="text-align:left;padding:6px;">类型</th><th style="text-align:left;padding:6px;">名称</th><th style="text-align:right;padding:6px;">单价</th><th style="text-align:center;padding:6px;">数量</th><th style="text-align:center;padding:6px;">折扣</th><th style="text-align:right;padding:6px;">小计</th></tr>';
+    cart.forEach(item => {
+      const disc = Math.round(item.price * item.qty * item.discount / 100);
+      cs += `<tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:6px;">${item.type==='pump'?'泵':'配件'}</td>
+        <td style="padding:6px;">${item.name}</td>
+        <td style="text-align:right;padding:6px;">${fmtPrice(item.price)}</td>
+        <td style="text-align:center;padding:6px;">${item.qty}</td>
+        <td style="text-align:center;padding:6px;">${item.discount<100?item.discount+'折':'-'}</td>
+        <td style="text-align:right;padding:6px;color:var(--price-color);font-weight:700;">${fmtPrice(disc)}</td>
+      </tr>`;
+    });
+    cs += '</table>';
+    comboSummary.innerHTML = cs;
+    comboTotal.innerHTML = `<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <span>原价合计：${fmtPrice(originalTotal)}</span>
+      <span style="color:var(--accent);font-weight:700;font-size:20px;">折扣价：${fmtPrice(discountedTotal)}</span>
+    </div>`;
+  }
+}
+
+function onItemDiscountChange(idx, input) {
+  const v = parseInt(input.value);
+  if (v >= 60 && v <= 100) {
+    cart[idx].discount = v;
+    updateCart();
+  } else if (v < 60) {
+    cart[idx].discount = 60;
+    input.value = 60;
+    updateCart();
+    showToast('单品折扣最低为60%');
+  }
+}
+
+function onGlobalDiscountChange() {
+  const v = parseInt(document.getElementById('global-discount').value);
+  if (v >= 60 && v <= 100) {
+    globalDiscount = v;
+    cart.forEach(item => { item.discount = v; });
+    updateCart();
+  } else if (v < 60) {
+    globalDiscount = 60;
+    document.getElementById('global-discount').value = 60;
+    cart.forEach(item => { item.discount = 60; });
+    updateCart();
+    showToast('折扣最低为60%');
+  }
+}
+
+function setQuickDiscount(val) {
+  globalDiscount = val;
+  document.getElementById('global-discount').value = val;
+  // 同步到所有条目
+  cart.forEach(item => { item.discount = val; });
+  updateCart();
+}
+
+function updateQuickBtns() {
+  document.querySelectorAll('.discount-quick').forEach(btn => {
+    const txt = btn.textContent.trim();
+    let v;
+    if (txt === '原价') { v = 100; }
+    else { v = parseInt(txt.replace(/[^0-9]/g, '')); }
+    btn.classList.toggle('active', v === globalDiscount);
+  });
+}
+
+function clearCart() {
+  cart = [];
+  updateCart();
+  // 重置按钮状态
+  document.querySelectorAll('.btn-add.added').forEach(b => {
+    b.classList.remove('added');
+    b.textContent = '加入清单';
+  });
+  showToast('清单已清空');
+}
+
+function copyCart() {
+  if (cart.length === 0) {
+    showToast('请先添加产品到清单');
+    return;
+  }
+  // 计算客户标签
+  function getTag(discount) {
+    if (discount >= 100) return '';
+    if (discount >= 70) return '（老客户专享）';
+    return '（供应商专享）';
+  }
+  // 计算总标签（取折扣最低的）
+  const minDisc = Math.min(...cart.map(c => c.discount));
+  const totalTag = getTag(minDisc);
+  const totalLabel = minDisc >= 100 ? '合计' : (minDisc >= 70 ? '老客户专享价' : '供应商专享价');
+
+  let text = '【创美机电报价清单】\n';
+  text += '━━━━━━━━━━━━━━━━\n';
+  let discountedTotal = 0;
+  cart.forEach((item, idx) => {
+    const discSub = Math.round(item.price * item.qty * item.discount / 100);
+    discountedTotal += discSub;
+    const tag = getTag(item.discount);
+    text += `${idx+1}. [${item.type==='pump'?'泵':'配件'}] ${item.name}\n`;
+    if (item.spec) text += `   规格：${item.spec}\n`;
+    text += `   ${fmtPrice(discSub)} × ${item.qty}${item.unit||'套'}${tag}\n`;
+  });
+  text += '━━━━━━━━━━━━━━━━\n';
+  text += `${totalLabel}：${fmtPrice(discountedTotal)}\n`;
+  text += `报价日期：${new Date().toLocaleDateString('zh-CN')}\n`;
+  text += '━━━━━━━━━━━━━━━━\n';
+  text += '浙江创美机电有限公司\n';
+  text += '以上价格含税，含标配附件';
+
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('已复制，可直接粘贴发送微信');
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('已复制，可直接粘贴发送微信');
+  });
+}
+
+// ============ 筛选 ============
+function filterPumps() {
+  const search = document.getElementById('pump-search').value.toLowerCase();
+  const globalQuery = document.getElementById('global-search').value.toLowerCase().trim();
+  const catFilter = document.getElementById('pump-category-filter').value;
+  document.querySelectorAll('#page-pump .section').forEach(sec => {
+    const cat = sec.dataset.cat;
+    if (catFilter && cat !== catFilter) { sec.style.display = 'none'; return; }
+    let visible = false;
+    sec.querySelectorAll('[data-search]').forEach(row => {
+      const txt = row.dataset.search.toLowerCase();
+      const matchLocal = !search || txt.includes(search);
+      const matchGlobal = !globalQuery || txt.includes(globalQuery);
+      const match = matchLocal && matchGlobal;
+      row.style.display = match ? '' : 'none';
+      if (match) visible = true;
+    });
+    sec.style.display = visible ? '' : 'none';
+  });
+}
+
+function filterParts() {
+  const search = document.getElementById('parts-search').value.toLowerCase();
+  const globalQuery = document.getElementById('global-search').value.toLowerCase().trim();
+  const catFilter = document.getElementById('parts-category-filter').value;
+  document.querySelectorAll('#page-parts .section').forEach(sec => {
+    const cat = sec.dataset.cat;
+    if (catFilter && cat !== catFilter) { sec.style.display = 'none'; return; }
+    let visible = false;
+    sec.querySelectorAll('[data-search]').forEach(row => {
+      const txt = row.dataset.search.toLowerCase();
+      const matchLocal = !search || txt.includes(search);
+      const matchGlobal = !globalQuery || txt.includes(globalQuery);
+      const match = matchLocal && matchGlobal;
+      row.style.display = match ? '' : 'none';
+      if (match) visible = true;
+    });
+    sec.style.display = visible ? '' : 'none';
+  });
+}
+
+// ============ Tab切换 ============
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-'+tab).classList.add('active');
+
+  const tabMap = {pump:0, parts:1, combo:2};
+  document.querySelectorAll('.nav-tab')[tabMap[tab]].classList.add('active');
+
+  // 切换时重新应用全局搜索
+  filterAll();
+
+  if (tab === 'combo') updateCart();
+}
+
+// ============ 全局搜索 ============
+function filterAll() {
+  const query = document.getElementById('global-search').value.toLowerCase().trim();
+  const matchCountEl = document.getElementById('search-match-count');
+  const matchTextEl = document.getElementById('search-match-text');
+
+  if (!query) {
+    matchCountEl.style.display = 'none';
+    matchTextEl.style.display = 'none';
+    // 恢复原有筛选结果
+    if (currentTab === 'pump') filterPumps();
+    else if (currentTab === 'parts') filterParts();
+    return;
+  }
+
+  let totalMatch = 0;
+
+  // 搜索水泵页
+  if (currentTab === 'pump') {
+    document.querySelectorAll('#page-pump .section').forEach(sec => {
+      let sectionMatch = 0;
+      sec.querySelectorAll('[data-search]').forEach(row => {
+        const txt = row.dataset.search.toLowerCase();
+        const match = txt.includes(query);
+        row.style.display = match ? '' : 'none';
+        if (match) sectionMatch++;
+      });
+      sec.style.display = sectionMatch > 0 ? '' : 'none';
+      totalMatch += sectionMatch;
+    });
+  }
+
+  // 搜索配件页
+  if (currentTab === 'parts') {
+    document.querySelectorAll('#page-parts .section').forEach(sec => {
+      let sectionMatch = 0;
+      sec.querySelectorAll('[data-search]').forEach(row => {
+        const txt = row.dataset.search.toLowerCase();
+        const match = txt.includes(query);
+        row.style.display = match ? '' : 'none';
+        if (match) sectionMatch++;
+      });
+      sec.style.display = sectionMatch > 0 ? '' : 'none';
+      totalMatch += sectionMatch;
+    });
+  }
+
+  if (currentTab === 'pump' || currentTab === 'parts') {
+    matchCountEl.style.display = 'inline';
+    matchTextEl.style.display = 'inline';
+    matchCountEl.textContent = totalMatch;
+    matchTextEl.textContent = totalMatch > 0 ? ' 条匹配结果' : ' 条匹配 — 换个关键词试试';
+    matchTextEl.style.color = totalMatch > 0 ? 'var(--text-secondary)' : 'var(--red)';
+  }
+}
+
+// ============ 购物车面板 ============
+function toggleCart() {
+  const panel = document.getElementById('cart-panel');
+  const overlay = document.getElementById('cart-overlay');
+  if (panel.classList.contains('open')) {
+    closeCart();
+  } else {
+    panel.classList.add('open');
+    overlay.classList.add('open');
+    updateCart();
+  }
+}
+
+function closeCart() {
+  document.getElementById('cart-panel').classList.remove('open');
+  document.getElementById('cart-overlay').classList.remove('open');
+}
+
+// ============ Toast ============
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// ============ 初始化 ============
+document.addEventListener('DOMContentLoaded', () => {
+  buildPumpSections();
+  buildPartsSections();
+  updateCart();
+});
+</script>
+</body>
+</html>
