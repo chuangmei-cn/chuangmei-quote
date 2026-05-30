@@ -42,6 +42,17 @@ body {
 a { color: var(--accent); text-decoration: none; transition: var(--transition); }
 a:hover { color: var(--accent-light); }
 img { max-width: 100%; height: auto; display: block; }
+/* 图片占位 + 淡入效果 */
+img[loading="lazy"] {
+  background: var(--bg-mid);
+  min-height: 100px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+img[loading="lazy"].loaded {
+  opacity: 1;
+  background: transparent;
+}
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
 /* ========== Section Common ========== */
@@ -304,12 +315,12 @@ img { max-width: 100%; height: auto; display: block; }
           <div class="accordion-inner">
             <p class="desc">采用永磁同步电机直驱轴流叶轮，重量仅为传统轴流泵的1/4，体积小效率高。转速无级可调，可根据水位自动匹配流量。支持铝合金和不锈钢两种材质，满足不同介质需求。</p>
             <div class="product-images">
-              <img src="images/产品实物/1000-10-45.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
-              <img src="images/产品实物/500-10-22.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
-              <img src="images/产品实物/600-10-30.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
-              <img src="images/产品实物/600-8-22.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
-              <img src="images/产品实物/600-8-22不锈钢.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
-              <img src="images/产品实物/250SZQ800-10-37.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
+              <img src="images/产品实物/1000-10-45.jpg" alt="大流量防汛泵（轴流式）" loading="lazy" decoding="async">
+              <img src="images/产品实物/500-10-22.jpg" alt="大流量防汛泵（轴流式）" loading="lazy" decoding="async">
+              <img src="images/产品实物/600-10-30.jpg" alt="大流量防汛泵（轴流式）" loading="lazy" decoding="async">
+              <img src="images/产品实物/600-8-22.jpg" alt="大流量防汛泵（轴流式）" loading="lazy" decoding="async">
+              <img src="images/产品实物/600-8-22不锈钢.jpg" alt="大流量防汛泵（轴流式）" loading="lazy" decoding="async">
+              <img src="images/产品实物/250SZQ800-10-37.jpg" alt="大流量防汛泵（轴流式）" loading="lazy" decoding="async">
             </div>
             <table class="param-table">
               <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
@@ -345,10 +356,10 @@ img { max-width: 100%; height: auto; display: block; }
           <div class="accordion-inner">
             <p class="desc">针对地铁隧道、深基坑、高山输水等需要高扬程排水的场景设计。最高扬程可达200m，采用多级叶轮结构，配合永磁同步电机提供强劲动力。</p>
             <div class="product-images">
-              <img src="images/产品实物/110-120-55.jpg" alt="高扬程防汛泵" loading="lazy">
-              <img src="images/产品实物/一体高扬程泵.png" alt="高扬程防汛泵" loading="lazy">
-              <img src="images/产品实物/45kw.jpg" alt="高扬程防汛泵" loading="lazy">
-              <img src="images/产品实物/45kw水泵.png" alt="高扬程防汛泵" loading="lazy">
+              <img src="images/产品实物/110-120-55.jpg" alt="高扬程防汛泵" loading="lazy" decoding="async">
+              <img src="images/产品实物/一体高扬程泵.png" alt="高扬程防汛泵" loading="lazy" decoding="async">
+              <img src="images/产品实物/45kw.jpg" alt="高扬程防汛泵" loading="lazy" decoding="async">
+              <img src="images/产品实物/45kw水泵.png" alt="高扬程防汛泵" loading="lazy" decoding="async">
             </div>
             <table class="param-table">
               <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
@@ -383,9 +394,9 @@ img { max-width: 100%; height: auto; display: block; }
           <div class="accordion-inner">
             <p class="desc">一台电机通过更换叶轮组件，实现大流量与高扬程双模式切换。特别适合工况多变、需要灵活应对的排涝场景，有效降低装备采购和运维成本。</p>
             <div class="product-images">
-              <img src="images/产品实物/22KW双用泵.jpg" alt="双用防汛泵" loading="lazy">
-              <img src="images/产品实物/55KW双用泵.jpg" alt="双用防汛泵" loading="lazy">
-              <img src="images/产品实物/55kw双用泵(2).png" alt="双用防汛泵" loading="lazy">
+              <img src="images/产品实物/22KW双用泵.jpg" alt="双用防汛泵" loading="lazy" decoding="async">
+              <img src="images/产品实物/55KW双用泵.jpg" alt="双用防汛泵" loading="lazy" decoding="async">
+              <img src="images/产品实物/55kw双用泵(2).png" alt="双用防汛泵" loading="lazy" decoding="async">
             </div>
             <table class="param-table">
               <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
@@ -414,9 +425,9 @@ img { max-width: 100%; height: auto; display: block; }
           <div class="accordion-inner">
             <p class="desc">进水口位于泵体底部，可将积水水位抽降至100mm以下，极大减少残留水。适合地下车库、地下室、低洼地带等需要彻底排水的场景。</p>
             <div class="product-images">
-              <img src="images/产品实物/22kw轻型.png" alt="下吸式防汛泵" loading="lazy">
-              <img src="images/产品实物/600方轻型.png" alt="下吸式防汛泵" loading="lazy">
-              <img src="images/产品实物/轻型带浮圈.jpg" alt="下吸式防汛泵" loading="lazy">
+              <img src="images/产品实物/22kw轻型.png" alt="下吸式防汛泵" loading="lazy" decoding="async">
+              <img src="images/产品实物/600方轻型.png" alt="下吸式防汛泵" loading="lazy" decoding="async">
+              <img src="images/产品实物/轻型带浮圈.jpg" alt="下吸式防汛泵" loading="lazy" decoding="async">
             </div>
             <table class="param-table">
               <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
@@ -447,7 +458,7 @@ img { max-width: 100%; height: auto; display: block; }
           <div class="accordion-inner">
             <p class="desc">用于远距离输水场景，当单台泵扬程不足以覆盖输送距离时，通过接力方式逐级增压。支持大流量和高扬程两种模式，适用于长距离排水、跨区域调水等工程。</p>
             <div class="product-images">
-              <img src="images/产品实物/接力装置泵.png" alt="接力泵（增压输送）" loading="lazy">
+              <img src="images/产品实物/接力装置泵.png" alt="接力泵（增压输送）" loading="lazy" decoding="async">
             </div>
             <table class="param-table">
               <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
@@ -478,8 +489,8 @@ img { max-width: 100%; height: auto; display: block; }
           <div class="accordion-inner">
             <p class="desc">车载液压驱动，无需市电，机动性强。DN200/250/300口径，流量300-1500m³/h，扬程6-15m。液压动力站15-90HP，可搭载在各类应急车辆上快速响应。</p>
             <div class="product-images">
-              <img src="images/产品实物/b846a4f0-3e25-49d3-9503-def0c062b9a1.png" alt="液压轴流泵（便携式）" loading="lazy">
-              <img src="images/产品实物/cbb9e1dbcc814ff777fbb0df55fed24a.jpg" alt="液压轴流泵（便携式）" loading="lazy">
+              <img src="images/产品实物/b846a4f0-3e25-49d3-9503-def0c062b9a1.png" alt="液压轴流泵（便携式）" loading="lazy" decoding="async">
+              <img src="images/产品实物/cbb9e1dbcc814ff777fbb0df55fed24a.jpg" alt="液压轴流泵（便携式）" loading="lazy" decoding="async">
             </div>
             <table class="param-table">
               <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
@@ -509,9 +520,9 @@ img { max-width: 100%; height: auto; display: block; }
           <div class="accordion-inner">
             <p class="desc">型号CMFD01，将泵+电器柜+浮体+接头+水带集成于一个箱体内，重量约200kg，外形尺寸1000×800×1250mm。即开即用，无需现场组装，极大缩短应急响应时间。</p>
             <div class="product-images">
-              <img src="images/产品实物/4轮移动泵车.jpg" alt="防汛单元（一体化排涝箱）" loading="lazy">
-              <img src="images/产品实物/内蒙古45kw.png" alt="防汛单元（一体化排涝箱）" loading="lazy">
-              <img src="images/配件与安装/65台防汛单元.png" alt="防汛单元（一体化排涝箱）" loading="lazy">
+              <img src="images/产品实物/4轮移动泵车.jpg" alt="防汛单元（一体化排涝箱）" loading="lazy" decoding="async">
+              <img src="images/产品实物/内蒙古45kw.png" alt="防汛单元（一体化排涝箱）" loading="lazy" decoding="async">
+              <img src="images/配件与安装/65台防汛单元.png" alt="防汛单元（一体化排涝箱）" loading="lazy" decoding="async">
             </div>
             <table class="param-table">
               <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
@@ -688,15 +699,15 @@ img { max-width: 100%; height: auto; display: block; }
       <div class="cert-grid">
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/09_05-1_永磁同步电机防汛泵_国家一级节能认证_CQC24701453667.png')" title="点击放大">
-          <img src="images/资质证书/09_05-1_永磁同步电机防汛泵_国家一级节能认证_CQC24701453667.png" alt="资质证书/09_05-1_永磁同步电机防汛泵_国家一级节能认证_CQC24701453667.png" loading="lazy">
+          <img src="images/资质证书/09_05-1_永磁同步电机防汛泵_国家一级节能认证_CQC24701453667.png" alt="资质证书/09_05-1_永磁同步电机防汛泵_国家一级节能认证_CQC24701453667.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/10_05-2_永磁同步电机防汛泵_国家一级节能认证_CQC24701453674.png')" title="点击放大">
-          <img src="images/资质证书/10_05-2_永磁同步电机防汛泵_国家一级节能认证_CQC24701453674.png" alt="资质证书/10_05-2_永磁同步电机防汛泵_国家一级节能认证_CQC24701453674.png" loading="lazy">
+          <img src="images/资质证书/10_05-2_永磁同步电机防汛泵_国家一级节能认证_CQC24701453674.png" alt="资质证书/10_05-2_永磁同步电机防汛泵_国家一级节能认证_CQC24701453674.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/11_05-3_永磁同步电动机_国家一级节能认证_CQC19701217917.png')" title="点击放大">
-          <img src="images/资质证书/11_05-3_永磁同步电动机_国家一级节能认证_CQC19701217917.png" alt="资质证书/11_05-3_永磁同步电动机_国家一级节能认证_CQC19701217917.png" loading="lazy">
+          <img src="images/资质证书/11_05-3_永磁同步电动机_国家一级节能认证_CQC19701217917.png" alt="资质证书/11_05-3_永磁同步电动机_国家一级节能认证_CQC19701217917.png" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -706,11 +717,11 @@ img { max-width: 100%; height: auto; display: block; }
       <div class="cert-grid">
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/14_08-1_装备承制单位资格证书_25B0001364.png')" title="点击放大">
-          <img src="images/资质证书/14_08-1_装备承制单位资格证书_25B0001364.png" alt="资质证书/14_08-1_装备承制单位资格证书_25B0001364.png" loading="lazy">
+          <img src="images/资质证书/14_08-1_装备承制单位资格证书_25B0001364.png" alt="资质证书/14_08-1_装备承制单位资格证书_25B0001364.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/15_08-2_装备承制单位资格证书副本_25B0001364.png')" title="点击放大">
-          <img src="images/资质证书/15_08-2_装备承制单位资格证书副本_25B0001364.png" alt="资质证书/15_08-2_装备承制单位资格证书副本_25B0001364.png" loading="lazy">
+          <img src="images/资质证书/15_08-2_装备承制单位资格证书副本_25B0001364.png" alt="资质证书/15_08-2_装备承制单位资格证书副本_25B0001364.png" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -720,31 +731,31 @@ img { max-width: 100%; height: auto; display: block; }
       <div class="cert-grid">
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/21_12-1_ISO9001质量管理体系认证_29025Q10998-05R1M.png')" title="点击放大">
-          <img src="images/资质证书/21_12-1_ISO9001质量管理体系认证_29025Q10998-05R1M.png" alt="资质证书/21_12-1_ISO9001质量管理体系认证_29025Q10998-05R1M.png" loading="lazy">
+          <img src="images/资质证书/21_12-1_ISO9001质量管理体系认证_29025Q10998-05R1M.png" alt="资质证书/21_12-1_ISO9001质量管理体系认证_29025Q10998-05R1M.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/22_12-2_ISO14001环境管理体系认证_29025E10723-05R1M.png')" title="点击放大">
-          <img src="images/资质证书/22_12-2_ISO14001环境管理体系认证_29025E10723-05R1M.png" alt="资质证书/22_12-2_ISO14001环境管理体系认证_29025E10723-05R1M.png" loading="lazy">
+          <img src="images/资质证书/22_12-2_ISO14001环境管理体系认证_29025E10723-05R1M.png" alt="资质证书/22_12-2_ISO14001环境管理体系认证_29025E10723-05R1M.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/23_12-3_ISO45001职业健康安全管理体系_29025S10699-05R1M.png')" title="点击放大">
-          <img src="images/资质证书/23_12-3_ISO45001职业健康安全管理体系_29025S10699-05R1M.png" alt="资质证书/23_12-3_ISO45001职业健康安全管理体系_29025S10699-05R1M.png" loading="lazy">
+          <img src="images/资质证书/23_12-3_ISO45001职业健康安全管理体系_29025S10699-05R1M.png" alt="资质证书/23_12-3_ISO45001职业健康安全管理体系_29025S10699-05R1M.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/24_12-4_售后服务认证_五星级_55025F0184R0.png')" title="点击放大">
-          <img src="images/资质证书/24_12-4_售后服务认证_五星级_55025F0184R0.png" alt="资质证书/24_12-4_售后服务认证_五星级_55025F0184R0.png" loading="lazy">
+          <img src="images/资质证书/24_12-4_售后服务认证_五星级_55025F0184R0.png" alt="资质证书/24_12-4_售后服务认证_五星级_55025F0184R0.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/25_12-5_知识产权合规管理体系认证.png')" title="点击放大">
-          <img src="images/资质证书/25_12-5_知识产权合规管理体系认证.png" alt="资质证书/25_12-5_知识产权合规管理体系认证.png" loading="lazy">
+          <img src="images/资质证书/25_12-5_知识产权合规管理体系认证.png" alt="资质证书/25_12-5_知识产权合规管理体系认证.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/12_06_中国环境标志认证证书_CEC-RL-I-1784-2024.png')" title="点击放大">
-          <img src="images/资质证书/12_06_中国环境标志认证证书_CEC-RL-I-1784-2024.png" alt="资质证书/12_06_中国环境标志认证证书_CEC-RL-I-1784-2024.png" loading="lazy">
+          <img src="images/资质证书/12_06_中国环境标志认证证书_CEC-RL-I-1784-2024.png" alt="资质证书/12_06_中国环境标志认证证书_CEC-RL-I-1784-2024.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/13_07_永磁同步电机防汛泵产品质量认证证书_CFDP-ZSRK-0015.png')" title="点击放大">
-          <img src="images/资质证书/13_07_永磁同步电机防汛泵产品质量认证证书_CFDP-ZSRK-0015.png" alt="资质证书/13_07_永磁同步电机防汛泵产品质量认证证书_CFDP-ZSRK-0015.png" loading="lazy">
+          <img src="images/资质证书/13_07_永磁同步电机防汛泵产品质量认证证书_CFDP-ZSRK-0015.png" alt="资质证书/13_07_永磁同步电机防汛泵产品质量认证证书_CFDP-ZSRK-0015.png" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -754,19 +765,19 @@ img { max-width: 100%; height: auto; display: block; }
       <div class="cert-grid">
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/06_03_国家高新技术企业证书.png')" title="点击放大">
-          <img src="images/资质证书/06_03_国家高新技术企业证书.png" alt="资质证书/06_03_国家高新技术企业证书.png" loading="lazy">
+          <img src="images/资质证书/06_03_国家高新技术企业证书.png" alt="资质证书/06_03_国家高新技术企业证书.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/07_04-1_浙江省专精特新中小企业.png')" title="点击放大">
-          <img src="images/资质证书/07_04-1_浙江省专精特新中小企业.png" alt="资质证书/07_04-1_浙江省专精特新中小企业.png" loading="lazy">
+          <img src="images/资质证书/07_04-1_浙江省专精特新中小企业.png" alt="资质证书/07_04-1_浙江省专精特新中小企业.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/08_04-2_浙江省创新型中小企业.png')" title="点击放大">
-          <img src="images/资质证书/08_04-2_浙江省创新型中小企业.png" alt="资质证书/08_04-2_浙江省创新型中小企业.png" loading="lazy">
+          <img src="images/资质证书/08_04-2_浙江省创新型中小企业.png" alt="资质证书/08_04-2_浙江省创新型中小企业.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/28_15_荣格技术创新奖_高速深井泵.png')" title="点击放大">
-          <img src="images/资质证书/28_15_荣格技术创新奖_高速深井泵.png" alt="资质证书/28_15_荣格技术创新奖_高速深井泵.png" loading="lazy">
+          <img src="images/资质证书/28_15_荣格技术创新奖_高速深井泵.png" alt="资质证书/28_15_荣格技术创新奖_高速深井泵.png" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -776,31 +787,31 @@ img { max-width: 100%; height: auto; display: block; }
       <div class="cert-grid">
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/16_09-1_中国消防协会会员证书_编号2172.png')" title="点击放大">
-          <img src="images/资质证书/16_09-1_中国消防协会会员证书_编号2172.png" alt="资质证书/16_09-1_中国消防协会会员证书_编号2172.png" loading="lazy">
+          <img src="images/资质证书/16_09-1_中国消防协会会员证书_编号2172.png" alt="资质证书/16_09-1_中国消防协会会员证书_编号2172.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/17_09-2_中国工业节能与清洁生产协会会员证书.png')" title="点击放大">
-          <img src="images/资质证书/17_09-2_中国工业节能与清洁生产协会会员证书.png" alt="资质证书/17_09-2_中国工业节能与清洁生产协会会员证书.png" loading="lazy">
+          <img src="images/资质证书/17_09-2_中国工业节能与清洁生产协会会员证书.png" alt="资质证书/17_09-2_中国工业节能与清洁生产协会会员证书.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/18_09-3_会员证书.png')" title="点击放大">
-          <img src="images/资质证书/18_09-3_会员证书.png" alt="资质证书/18_09-3_会员证书.png" loading="lazy">
+          <img src="images/资质证书/18_09-3_会员证书.png" alt="资质证书/18_09-3_会员证书.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/19_10_防汛排涝泵研究中心.png')" title="点击放大">
-          <img src="images/资质证书/19_10_防汛排涝泵研究中心.png" alt="资质证书/19_10_防汛排涝泵研究中心.png" loading="lazy">
+          <img src="images/资质证书/19_10_防汛排涝泵研究中心.png" alt="资质证书/19_10_防汛排涝泵研究中心.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/20_11_科技成果认证证书_防砂结构_DJ110022024Y0002.png')" title="点击放大">
-          <img src="images/资质证书/20_11_科技成果认证证书_防砂结构_DJ110022024Y0002.png" alt="资质证书/20_11_科技成果认证证书_防砂结构_DJ110022024Y0002.png" loading="lazy">
+          <img src="images/资质证书/20_11_科技成果认证证书_防砂结构_DJ110022024Y0002.png" alt="资质证书/20_11_科技成果认证证书_防砂结构_DJ110022024Y0002.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/26_13_软件著作权_永磁同步电机泵变频调速自动控制及远程系统_2021SR0626339.png')" title="点击放大">
-          <img src="images/资质证书/26_13_软件著作权_永磁同步电机泵变频调速自动控制及远程系统_2021SR0626339.png" alt="资质证书/26_13_软件著作权_永磁同步电机泵变频调速自动控制及远程系统_2021SR0626339.png" loading="lazy">
+          <img src="images/资质证书/26_13_软件著作权_永磁同步电机泵变频调速自动控制及远程系统_2021SR0626339.png" alt="资质证书/26_13_软件著作权_永磁同步电机泵变频调速自动控制及远程系统_2021SR0626339.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/27_14_软件著作网页查询.png')" title="点击放大">
-          <img src="images/资质证书/27_14_软件著作网页查询.png" alt="资质证书/27_14_软件著作网页查询.png" loading="lazy">
+          <img src="images/资质证书/27_14_软件著作网页查询.png" alt="资质证书/27_14_软件著作网页查询.png" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -810,11 +821,11 @@ img { max-width: 100%; height: auto; display: block; }
       <div class="cert-grid">
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/04_01_营业执照.png')" title="点击放大">
-          <img src="images/资质证书/04_01_营业执照.png" alt="资质证书/04_01_营业执照.png" loading="lazy">
+          <img src="images/资质证书/04_01_营业执照.png" alt="资质证书/04_01_营业执照.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/05_02_开户许可证.png')" title="点击放大">
-          <img src="images/资质证书/05_02_开户许可证.png" alt="资质证书/05_02_开户许可证.png" loading="lazy">
+          <img src="images/资质证书/05_02_开户许可证.png" alt="资质证书/05_02_开户许可证.png" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -824,107 +835,107 @@ img { max-width: 100%; height: auto; display: block; }
       <div class="cert-grid">
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/29_16-01_发明专利_高速深井泵_ZL201110429319.7.png')" title="点击放大">
-          <img src="images/资质证书/29_16-01_发明专利_高速深井泵_ZL201110429319.7.png" alt="资质证书/29_16-01_发明专利_高速深井泵_ZL201110429319.7.png" loading="lazy">
+          <img src="images/资质证书/29_16-01_发明专利_高速深井泵_ZL201110429319.7.png" alt="资质证书/29_16-01_发明专利_高速深井泵_ZL201110429319.7.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/30_16-02_发明专利_永磁同步电机_ZL201510117114.1.png')" title="点击放大">
-          <img src="images/资质证书/30_16-02_发明专利_永磁同步电机_ZL201510117114.1.png" alt="资质证书/30_16-02_发明专利_永磁同步电机_ZL201510117114.1.png" loading="lazy">
+          <img src="images/资质证书/30_16-02_发明专利_永磁同步电机_ZL201510117114.1.png" alt="资质证书/30_16-02_发明专利_永磁同步电机_ZL201510117114.1.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/31_16-03_发明专利_水泵叶轮制造方法及水泵_ZL202010791360.3.png')" title="点击放大">
-          <img src="images/资质证书/31_16-03_发明专利_水泵叶轮制造方法及水泵_ZL202010791360.3.png" alt="资质证书/31_16-03_发明专利_水泵叶轮制造方法及水泵_ZL202010791360.3.png" loading="lazy">
+          <img src="images/资质证书/31_16-03_发明专利_水泵叶轮制造方法及水泵_ZL202010791360.3.png" alt="资质证书/31_16-03_发明专利_水泵叶轮制造方法及水泵_ZL202010791360.3.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/32_16-04_发明专利_一种单相电机_ZL202011288050.6.png')" title="点击放大">
-          <img src="images/资质证书/32_16-04_发明专利_一种单相电机_ZL202011288050.6.png" alt="资质证书/32_16-04_发明专利_一种单相电机_ZL202011288050.6.png" loading="lazy">
+          <img src="images/资质证书/32_16-04_发明专利_一种单相电机_ZL202011288050.6.png" alt="资质证书/32_16-04_发明专利_一种单相电机_ZL202011288050.6.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/33_16-05_发明专利_一种离心水泵_ZL202011288046.X.png')" title="点击放大">
-          <img src="images/资质证书/33_16-05_发明专利_一种离心水泵_ZL202011288046.X.png" alt="资质证书/33_16-05_发明专利_一种离心水泵_ZL202011288046.X.png" loading="lazy">
+          <img src="images/资质证书/33_16-05_发明专利_一种离心水泵_ZL202011288046.X.png" alt="资质证书/33_16-05_发明专利_一种离心水泵_ZL202011288046.X.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/34_16-06_发明专利_一种主轴电机_ZL202011288015.4.png')" title="点击放大">
-          <img src="images/资质证书/34_16-06_发明专利_一种主轴电机_ZL202011288015.4.png" alt="资质证书/34_16-06_发明专利_一种主轴电机_ZL202011288015.4.png" loading="lazy">
+          <img src="images/资质证书/34_16-06_发明专利_一种主轴电机_ZL202011288015.4.png" alt="资质证书/34_16-06_发明专利_一种主轴电机_ZL202011288015.4.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/35_16-07_发明专利_节能高效高频潜水电机_ZL202310997428.7.png')" title="点击放大">
-          <img src="images/资质证书/35_16-07_发明专利_节能高效高频潜水电机_ZL202310997428.7.png" alt="资质证书/35_16-07_发明专利_节能高效高频潜水电机_ZL202310997428.7.png" loading="lazy">
+          <img src="images/资质证书/35_16-07_发明专利_节能高效高频潜水电机_ZL202310997428.7.png" alt="资质证书/35_16-07_发明专利_节能高效高频潜水电机_ZL202310997428.7.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/36_16-08_实用新型_一种浮体泵_ZL202221473627.5.png')" title="点击放大">
-          <img src="images/资质证书/36_16-08_实用新型_一种浮体泵_ZL202221473627.5.png" alt="资质证书/36_16-08_实用新型_一种浮体泵_ZL202221473627.5.png" loading="lazy">
+          <img src="images/资质证书/36_16-08_实用新型_一种浮体泵_ZL202221473627.5.png" alt="资质证书/36_16-08_实用新型_一种浮体泵_ZL202221473627.5.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/37_16-09_德国实用新型_智能高效深井泵_212012000152.2.png')" title="点击放大">
-          <img src="images/资质证书/37_16-09_德国实用新型_智能高效深井泵_212012000152.2.png" alt="资质证书/37_16-09_德国实用新型_智能高效深井泵_212012000152.2.png" loading="lazy">
+          <img src="images/资质证书/37_16-09_德国实用新型_智能高效深井泵_212012000152.2.png" alt="资质证书/37_16-09_德国实用新型_智能高效深井泵_212012000152.2.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/38_16-10_实用新型_一种智能高效深井泵_ZL201220379287.X.png')" title="点击放大">
-          <img src="images/资质证书/38_16-10_实用新型_一种智能高效深井泵_ZL201220379287.X.png" alt="资质证书/38_16-10_实用新型_一种智能高效深井泵_ZL201220379287.X.png" loading="lazy">
+          <img src="images/资质证书/38_16-10_实用新型_一种智能高效深井泵_ZL201220379287.X.png" alt="资质证书/38_16-10_实用新型_一种智能高效深井泵_ZL201220379287.X.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/39_16-11_实用新型_高速太阳能井泵_ZL201220571732.2.png')" title="点击放大">
-          <img src="images/资质证书/39_16-11_实用新型_高速太阳能井泵_ZL201220571732.2.png" alt="资质证书/39_16-11_实用新型_高速太阳能井泵_ZL201220571732.2.png" loading="lazy">
+          <img src="images/资质证书/39_16-11_实用新型_高速太阳能井泵_ZL201220571732.2.png" alt="资质证书/39_16-11_实用新型_高速太阳能井泵_ZL201220571732.2.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/40_16-12_实用新型_机床冷却泵_ZL201220571783.5.png')" title="点击放大">
-          <img src="images/资质证书/40_16-12_实用新型_机床冷却泵_ZL201220571783.5.png" alt="资质证书/40_16-12_实用新型_机床冷却泵_ZL201220571783.5.png" loading="lazy">
+          <img src="images/资质证书/40_16-12_实用新型_机床冷却泵_ZL201220571783.5.png" alt="资质证书/40_16-12_实用新型_机床冷却泵_ZL201220571783.5.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/41_16-13_实用新型_一种高效离心式水泵_ZL201220422392.7.png')" title="点击放大">
-          <img src="images/资质证书/41_16-13_实用新型_一种高效离心式水泵_ZL201220422392.7.png" alt="资质证书/41_16-13_实用新型_一种高效离心式水泵_ZL201220422392.7.png" loading="lazy">
+          <img src="images/资质证书/41_16-13_实用新型_一种高效离心式水泵_ZL201220422392.7.png" alt="资质证书/41_16-13_实用新型_一种高效离心式水泵_ZL201220422392.7.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/42_16-14_实用新型_一体式高速深井泵_ZL201320074172.4.png')" title="点击放大">
-          <img src="images/资质证书/42_16-14_实用新型_一体式高速深井泵_ZL201320074172.4.png" alt="资质证书/42_16-14_实用新型_一体式高速深井泵_ZL201320074172.4.png" loading="lazy">
+          <img src="images/资质证书/42_16-14_实用新型_一体式高速深井泵_ZL201320074172.4.png" alt="资质证书/42_16-14_实用新型_一体式高速深井泵_ZL201320074172.4.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/43_16-15_实用新型_智能高效管道泵_ZL201320497655.5.png')" title="点击放大">
-          <img src="images/资质证书/43_16-15_实用新型_智能高效管道泵_ZL201320497655.5.png" alt="资质证书/43_16-15_实用新型_智能高效管道泵_ZL201320497655.5.png" loading="lazy">
+          <img src="images/资质证书/43_16-15_实用新型_智能高效管道泵_ZL201320497655.5.png" alt="资质证书/43_16-15_实用新型_智能高效管道泵_ZL201320497655.5.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/44_16-16_实用新型_一种水泵_ZL201320543445.5.png')" title="点击放大">
-          <img src="images/资质证书/44_16-16_实用新型_一种水泵_ZL201320543445.5.png" alt="资质证书/44_16-16_实用新型_一种水泵_ZL201320543445.5.png" loading="lazy">
+          <img src="images/资质证书/44_16-16_实用新型_一种水泵_ZL201320543445.5.png" alt="资质证书/44_16-16_实用新型_一种水泵_ZL201320543445.5.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/45_16-17_实用新型_一种高速管中泵_ZL201320544914.5.png')" title="点击放大">
-          <img src="images/资质证书/45_16-17_实用新型_一种高速管中泵_ZL201320544914.5.png" alt="资质证书/45_16-17_实用新型_一种高速管中泵_ZL201320544914.5.png" loading="lazy">
+          <img src="images/资质证书/45_16-17_实用新型_一种高速管中泵_ZL201320544914.5.png" alt="资质证书/45_16-17_实用新型_一种高速管中泵_ZL201320544914.5.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/46_16-18_实用新型_一种潜水泵_ZL201420091521.8.png')" title="点击放大">
-          <img src="images/资质证书/46_16-18_实用新型_一种潜水泵_ZL201420091521.8.png" alt="资质证书/46_16-18_实用新型_一种潜水泵_ZL201420091521.8.png" loading="lazy">
+          <img src="images/资质证书/46_16-18_实用新型_一种潜水泵_ZL201420091521.8.png" alt="资质证书/46_16-18_实用新型_一种潜水泵_ZL201420091521.8.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/47_16-19_实用新型_一种水泵_ZL201420323569.3.png')" title="点击放大">
-          <img src="images/资质证书/47_16-19_实用新型_一种水泵_ZL201420323569.3.png" alt="资质证书/47_16-19_实用新型_一种水泵_ZL201420323569.3.png" loading="lazy">
+          <img src="images/资质证书/47_16-19_实用新型_一种水泵_ZL201420323569.3.png" alt="资质证书/47_16-19_实用新型_一种水泵_ZL201420323569.3.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/48_16-20_实用新型_一种深井泵_ZL201420481020.X.png')" title="点击放大">
-          <img src="images/资质证书/48_16-20_实用新型_一种深井泵_ZL201420481020.X.png" alt="资质证书/48_16-20_实用新型_一种深井泵_ZL201420481020.X.png" loading="lazy">
+          <img src="images/资质证书/48_16-20_实用新型_一种深井泵_ZL201420481020.X.png" alt="资质证书/48_16-20_实用新型_一种深井泵_ZL201420481020.X.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/49_16-21_实用新型_一种轴流泵_ZL201620069681.2.png')" title="点击放大">
-          <img src="images/资质证书/49_16-21_实用新型_一种轴流泵_ZL201620069681.2.png" alt="资质证书/49_16-21_实用新型_一种轴流泵_ZL201620069681.2.png" loading="lazy">
+          <img src="images/资质证书/49_16-21_实用新型_一种轴流泵_ZL201620069681.2.png" alt="资质证书/49_16-21_实用新型_一种轴流泵_ZL201620069681.2.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/50_16-22_实用新型_一种下吸式轴流泵_ZL202122599602.1.png')" title="点击放大">
-          <img src="images/资质证书/50_16-22_实用新型_一种下吸式轴流泵_ZL202122599602.1.png" alt="资质证书/50_16-22_实用新型_一种下吸式轴流泵_ZL202122599602.1.png" loading="lazy">
+          <img src="images/资质证书/50_16-22_实用新型_一种下吸式轴流泵_ZL202122599602.1.png" alt="资质证书/50_16-22_实用新型_一种下吸式轴流泵_ZL202122599602.1.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/52_16-24_实用新型_一种叶轮及泵_ZL202321012918.9.png')" title="点击放大">
-          <img src="images/资质证书/52_16-24_实用新型_一种叶轮及泵_ZL202321012918.9.png" alt="资质证书/52_16-24_实用新型_一种叶轮及泵_ZL202321012918.9.png" loading="lazy">
+          <img src="images/资质证书/52_16-24_实用新型_一种叶轮及泵_ZL202321012918.9.png" alt="资质证书/52_16-24_实用新型_一种叶轮及泵_ZL202321012918.9.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/53_16-25_外观设计_浮体泵_ZL202230353732.4.png')" title="点击放大">
-          <img src="images/资质证书/53_16-25_外观设计_浮体泵_ZL202230353732.4.png" alt="资质证书/53_16-25_外观设计_浮体泵_ZL202230353732.4.png" loading="lazy">
+          <img src="images/资质证书/53_16-25_外观设计_浮体泵_ZL202230353732.4.png" alt="资质证书/53_16-25_外观设计_浮体泵_ZL202230353732.4.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/54_16-26_外观设计_浮体_ZL202230353814.9.png')" title="点击放大">
-          <img src="images/资质证书/54_16-26_外观设计_浮体_ZL202230353814.9.png" alt="资质证书/54_16-26_外观设计_浮体_ZL202230353814.9.png" loading="lazy">
+          <img src="images/资质证书/54_16-26_外观设计_浮体_ZL202230353814.9.png" alt="资质证书/54_16-26_外观设计_浮体_ZL202230353814.9.png" loading="lazy" decoding="async">
         </div>
 
         <div class="cert-thumb" onclick="openLightbox('images/资质证书/55_16-27_外观设计_液压泵_ZL202230444077.3.png')" title="点击放大">
-          <img src="images/资质证书/55_16-27_外观设计_液压泵_ZL202230444077.3.png" alt="资质证书/55_16-27_外观设计_液压泵_ZL202230444077.3.png" loading="lazy">
+          <img src="images/资质证书/55_16-27_外观设计_液压泵_ZL202230444077.3.png" alt="资质证书/55_16-27_外观设计_液压泵_ZL202230444077.3.png" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1141,6 +1152,15 @@ window.addEventListener('scroll', function() {
       link.classList.add('active');
     }
   });
+});
+// 图片加载完成淡入
+document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+  if (img.complete) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', function() { img.classList.add('loaded'); });
+    img.addEventListener('error', function() { img.classList.add('loaded'); });
+  }
 });
 </script>
 
