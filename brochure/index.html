@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浙江创美机电有限公司 — 永磁防汛泵专家 | 在线产品画册</title>
+<meta name="description" content="浙江创美机电有限公司，国家高新技术企业，装备承制单位。专注于永磁同步电机防汛泵研发制造，产品覆盖大流量防汛泵、高扬程防汛泵、双用泵、液压轴流泵等7大系列。">
+<style>
+/* ========== CSS Variables ========== */
+:root {
+  --bg-deep: #0F1A2C;
+  --bg-mid: #1B2D4A;
+  --bg-card: #152238;
+  --accent: #00A3E0;
+  --accent-glow: rgba(0,163,224,0.15);
+  --accent-light: #33B5E5;
+  --orange: #FF8C00;
+  --orange-light: #FFA940;
+  --text: #E8ECF1;
+  --text-dim: #8899AA;
+  --text-muted: #5A6A7A;
+  --white: #FFFFFF;
+  --border: rgba(255,255,255,0.08);
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  --transition: 0.3s ease;
+  --font-mono: 'Courier New', monospace;
+  --nav-height: 64px;
+}
+
+/* ========== Reset & Base ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg-deep);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+a:hover { color: var(--accent-light); }
+img { max-width: 100%; height: auto; display: block; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ========== Section Common ========== */
+.section { padding: 80px 0; }
+.section-title {
+  font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 12px;
+  color: var(--white);
+}
+.section-subtitle { text-align: center; color: var(--text-dim); margin-bottom: 48px; font-size: 1.05rem; }
+.section-divider { width: 60px; height: 3px; background: var(--accent); margin: 0 auto 48px; border-radius: 2px; }
+
+/* ========== Navbar ========== */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15,26,44,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border); height: var(--nav-height);
+  display: flex; align-items: center;
+}
+.navbar .container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.navbar-brand { font-size: 1.1rem; font-weight: 700; color: var(--white); white-space: nowrap; }
+.navbar-brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: var(--text-dim); font-size: 0.9rem; font-weight: 500; transition: var(--transition); }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+
+/* ========== Hero ========== */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--bg-deep) 0%, #0D1F3C 40%, #112240 70%, var(--bg-mid) 100%);
+  position: relative; overflow: hidden; padding-top: var(--nav-height);
+}
+.hero::before {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(0,163,224,0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 20%, rgba(0,163,224,0.05) 0%, transparent 50%);
+  animation: heroPulse 8s ease-in-out infinite;
+}
+@keyframes heroPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.hero-content { position: relative; z-index: 1; text-align: center; }
+.hero-badge { display: inline-block; background: var(--accent-glow); border: 1px solid rgba(0,163,224,0.3); color: var(--accent); padding: 6px 20px; border-radius: 20px; font-size: 0.85rem; margin-bottom: 24px; }
+.hero h1 { font-size: 3.5rem; font-weight: 800; color: var(--white); margin-bottom: 16px; letter-spacing: 2px; }
+.hero h1 span { color: var(--accent); }
+.hero-subtitle { font-size: 1.15rem; color: var(--text-dim); margin-bottom: 40px; line-height: 1.8; }
+.hero-stats { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat-num { font-size: 2.2rem; font-weight: 800; color: var(--orange); }
+.hero-stat-label { font-size: 0.85rem; color: var(--text-dim); margin-top: 4px; }
+
+/* ========== Company Intro ========== */
+.intro { background: var(--bg-mid); }
+.intro-text { max-width: 800px; margin: 0 auto 48px; text-align: center; color: var(--text-dim); font-size: 1.05rem; line-height: 1.9; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.stat-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 32px 20px; text-align: center; transition: var(--transition);
+}
+.stat-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,163,224,0.15); }
+.stat-card .num { font-size: 2.5rem; font-weight: 800; color: var(--accent); }
+.stat-card .label { color: var(--text-dim); margin-top: 8px; font-size: 0.95rem; }
+
+/* ========== Product Center ========== */
+.products { background: var(--bg-deep); }
+.accordion { max-width: 1000px; margin: 0 auto; }
+.accordion-item { margin-bottom: 16px; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-card); }
+.accordion-header {
+  width: 100%; padding: 20px 28px; background: none; border: none; color: var(--white);
+  font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: var(--transition);
+}
+.accordion-header:hover { background: rgba(0,163,224,0.05); }
+.accordion-header .arrow { transition: var(--transition); font-size: 0.7rem; color: var(--accent); }
+.accordion-header.active .arrow { transform: rotate(180deg); }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.3s ease; }
+.accordion-body.open { max-height: 5000px; }
+.accordion-inner { padding: 0 28px 28px; }
+.accordion-inner .desc { color: var(--text-dim); margin-bottom: 20px; line-height: 1.8; }
+.product-images { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+.product-images img { width: 160px; height: 120px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--border); transition: var(--transition); }
+.product-images img:hover { transform: scale(1.05); border-color: var(--accent); }
+.product-images .placeholder {
+  width: 160px; height: 120px; border-radius: var(--radius); border: 1px dashed var(--border);
+  display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; background: rgba(255,255,255,0.02);
+}
+.param-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.9rem; }
+.param-table th { background: rgba(0,163,224,0.1); color: var(--accent); padding: 10px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--accent); }
+.param-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
+.param-table tr:hover td { background: rgba(255,255,255,0.02); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { background: var(--accent-glow); color: var(--accent-light); padding: 4px 14px; border-radius: 14px; font-size: 0.8rem; border: 1px solid rgba(0,163,224,0.2); }
+
+/* ========== Scenarios ========== */
+.scenarios { background: var(--bg-mid); }
+.scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.scenario-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 28px; transition: var(--transition);
+}
+.scenario-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow); }
+.scenario-card .icon { font-size: 2rem; margin-bottom: 12px; }
+.scenario-card h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 8px; }
+.scenario-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; margin-bottom: 10px; }
+.scenario-card .rec { font-size: 0.8rem; color: var(--orange); font-weight: 500; }
+
+/* ========== Cases ========== */
+.cases { background: var(--bg-deep); }
+.case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.case-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 24px; transition: var(--transition); text-align: center;
+}
+.case-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.case-card h3 { color: var(--white); font-size: 1rem; margin-bottom: 8px; }
+.case-card .loc { color: var(--accent); font-size: 0.85rem; margin-bottom: 6px; }
+.case-card .scale { color: var(--text-dim); font-size: 0.85rem; }
+
+/* ========== Certificates ========== */
+.certs { background: var(--bg-mid); }
+.cert-group { margin-bottom: 40px; }
+.cert-group h3 { color: var(--accent); font-size: 1.15rem; margin-bottom: 16px; padding-left: 12px; border-left: 3px solid var(--accent); }
+.cert-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.cert-thumb { cursor: pointer; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); aspect-ratio: 3/4; }
+.cert-thumb:hover { border-color: var(--accent); transform: scale(1.03); }
+.cert-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Lightbox */
+.lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 2000; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; border-radius: var(--radius); }
+.lightbox-close { position: absolute; top: 20px; right: 30px; color: var(--white); font-size: 2rem; cursor: pointer; background: none; border: none; }
+
+/* ========== Accessories ========== */
+.accessories { background: var(--bg-deep); }
+.acc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.acc-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: var(--transition); }
+.acc-card:hover { border-color: var(--accent); }
+.acc-card h4 { color: var(--white); font-size: 0.95rem; margin-bottom: 8px; }
+.acc-card p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; }
+
+/* ========== CTA ========== */
+.cta { background: linear-gradient(135deg, #0F1A2C 0%, #1B2D4A 100%); border-top: 3px solid var(--accent); }
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.cta-info h2 { font-size: 1.8rem; color: var(--white); margin-bottom: 24px; }
+.cta-info p { color: var(--text-dim); margin-bottom: 12px; font-size: 0.95rem; }
+.cta-info .highlight { color: var(--orange); font-weight: 700; font-size: 1.3rem; }
+.cta-action { text-align: center; }
+.cta-btn { display: inline-block; background: var(--accent); color: var(--white); padding: 16px 40px; border-radius: 30px; font-size: 1.1rem; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; }
+.cta-btn:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,163,224,0.3); color: var(--white); }
+
+/* ========== Footer ========== */
+.footer { background: #0A1524; padding: 20px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+
+/* ========== Scroll Animation ========== */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== Responsive ========== */
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .scenario-grid { grid-template-columns: repeat(2, 1fr); }
+  .case-grid { grid-template-columns: repeat(2, 1fr); }
+  .cert-grid { grid-template-columns: repeat(4, 1fr); }
+  .acc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero-stats { gap: 20px; }
+  .hero-stat-num { font-size: 1.6rem; }
+  .nav-links { display: none; position: absolute; top: var(--nav-height); left: 0; right: 0; background: rgba(15,26,44,0.98); flex-direction: column; padding: 16px 0; gap: 0; border-bottom: 1px solid var(--border); }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 24px; display: block; }
+  .nav-toggle { display: block; }
+  .section { padding: 60px 0; }
+  .section-title { font-size: 1.5rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-card { padding: 20px 12px; }
+  .stat-card .num { font-size: 1.8rem; }
+  .scenario-grid { grid-template-columns: 1fr; }
+  .case-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: repeat(3, 1fr); }
+  .acc-grid { grid-template-columns: 1fr 1fr; }
+  .cta-grid { grid-template-columns: 1fr; gap: 24px; }
+  .product-images img { width: 120px; height: 90px; }
+  .param-table { font-size: 0.75rem; }
+  .param-table th, .param-table td { padding: 6px 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-brand">浙江<span>创美机电</span>有限公司</div>
+    <button class="nav-toggle" id="navToggle" aria-label="菜单">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#products">产品中心</a></li>
+      <li><a href="#scenarios">应用场景</a></li>
+      <li><a href="#cases">工程案例</a></li>
+      <li><a href="#certs">资质证书</a></li>
+      <li><a href="#accessories">配件目录</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="hero-content container">
+    <div class="hero-badge">PERMANENT MAGNET FLOOD PUMP</div>
+    <h1>永磁<span>防汛泵</span>专家</h1>
+    <p class="hero-subtitle">国家高新技术企业 &middot; 装备承制单位 &middot; 27项专利<br>深耕永磁泵领域，为中国防汛排涝提供高效可靠的解决方案</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">27+</div><div class="hero-stat-label">国家专利</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">21+</div><div class="hero-stat-label">专业资质</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">90+</div><div class="hero-stat-label">产品型号</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">300+</div><div class="hero-stat-label">服务项目</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Company Intro ===== -->
+<section class="section intro">
+  <div class="container">
+    <h2 class="section-title">企业简介</h2>
+    <div class="section-divider"></div>
+    <p class="intro-text">
+      浙江创美机电有限公司位于浙江省温岭市大溪镇塔岙工业区，是一家集研发、制造、销售于一体的国家高新技术企业。
+      公司专注于永磁同步电机防汛泵领域，拥有27项国家专利，产品通过国家一级节能认证，获得装备承制单位资格。
+      公司与中国泵类产品质量监督检验中心共建"防汛排涝泵研究中心"，产品广泛应用于防汛抢险、地铁隧道、城市排涝、水利水务等领域，
+      先后服务于杭州亚运会、湖南洞庭湖抢险、内蒙古应急厅等重大项目。
+    </p>
+    <div class="stats-grid">
+      <div class="stat-card fade-in"><div class="num">27</div><div class="label">项专利</div></div>
+      <div class="stat-card fade-in"><div class="num">21</div><div class="label">项资质</div></div>
+      <div class="stat-card fade-in"><div class="num">90+</div><div class="label">产品型号</div></div>
+      <div class="stat-card fade-in"><div class="num">8</div><div class="label">大应用场景</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Product Center ===== -->
+<section class="section products" id="products">
+  <div class="container">
+    <h2 class="section-title">产品中心</h2>
+    <p class="section-subtitle">7大系列 · 90+型号 · 覆盖防汛排涝全场景需求</p>
+    <div class="section-divider"></div>
+    <div class="accordion">
+
+      <div class="accordion-item fade-in">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span>大流量防汛泵（轴流式）</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-inner">
+            <p class="desc">采用永磁同步电机直驱轴流叶轮，重量仅为传统轴流泵的1/4，体积小效率高。转速无级可调，可根据水位自动匹配流量。支持铝合金和不锈钢两种材质，满足不同介质需求。</p>
+            <div class="product-images">
+              <img src="images/产品实物/1000-10-45.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
+              <img src="images/产品实物/500-10-22.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
+              <img src="images/产品实物/600-10-30.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
+              <img src="images/产品实物/600-8-22.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
+              <img src="images/产品实物/600-8-22不锈钢.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
+              <img src="images/产品实物/250SZQ800-10-37.jpg" alt="大流量防汛泵（轴流式）" loading="lazy">
+            </div>
+            <table class="param-table">
+              <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>DN150 (6寸)</td><td>150SZQ100-6-3</td><td>100 m³/h</td><td>6m</td><td>3 kW</td><td>不锈钢</td></tr>
+                <tr><td>DN150 (6寸)</td><td>150SZQ250-9-11</td><td>250 m³/h</td><td>9m</td><td>11 kW</td><td>不锈钢</td></tr>
+                <tr><td>DN200 (8寸)</td><td>200SZQ400-10-18.5</td><td>400 m³/h</td><td>10m</td><td>18.5 kW</td><td>铝合金</td></tr>
+                <tr><td>DN200 (8寸)</td><td>200SZQ600-10-30</td><td>600 m³/h</td><td>10m</td><td>30 kW</td><td>铝合金/不锈钢</td></tr>
+                <tr><td>DN250 (10寸)</td><td>250SZQ450-8-15</td><td>450 m³/h</td><td>8m</td><td>15 kW</td><td>不锈钢</td></tr>
+                <tr><td>DN250 (10寸)</td><td>250SZQ800-10-37</td><td>800 m³/h</td><td>10m</td><td>37 kW</td><td>铝合金/不锈钢</td></tr>
+                <tr><td>DN300 (12寸)</td><td>300SZQ800-15-55</td><td>800 m³/h</td><td>15m</td><td>55 kW</td><td>铝合金</td></tr>
+                <tr><td>DN300 (12寸)</td><td>300SZQ1500-10-75</td><td>1500 m³/h</td><td>10m</td><td>75 kW</td><td>铝合金</td></tr>
+              </tbody>
+            </table>
+            <div class="tags">
+              <span class="tag">永磁同步</span>
+              <span class="tag">轴流式</span>
+              <span class="tag">高效节能</span>
+              <span class="tag">轻量便携</span>
+              <span class="tag">无级调速</span>
+              <span class="tag">铝合金/不锈钢</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item fade-in">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span>高扬程防汛泵</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-inner">
+            <p class="desc">针对地铁隧道、深基坑、高山输水等需要高扬程排水的场景设计。最高扬程可达200m，采用多级叶轮结构，配合永磁同步电机提供强劲动力。</p>
+            <div class="product-images">
+              <img src="images/产品实物/110-120-55.jpg" alt="高扬程防汛泵" loading="lazy">
+              <img src="images/产品实物/一体高扬程泵.png" alt="高扬程防汛泵" loading="lazy">
+              <img src="images/产品实物/45kw.jpg" alt="高扬程防汛泵" loading="lazy">
+              <img src="images/产品实物/45kw水泵.png" alt="高扬程防汛泵" loading="lazy">
+            </div>
+            <table class="param-table">
+              <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>DN100 (4寸)</td><td>100SZQ80-15-5.5</td><td>80 m³/h</td><td>15m</td><td>5.5 kW</td></tr>
+                <tr><td>DN100 (4寸)</td><td>100SZQ100-160-75</td><td>100 m³/h</td><td>160m</td><td>75 kW</td></tr>
+                <tr><td>DN150 (6寸)</td><td>150SZQ100-30-15</td><td>100 m³/h</td><td>30m</td><td>15 kW</td></tr>
+                <tr><td>DN150 (6寸)</td><td>150SZQ150-100-75</td><td>150 m³/h</td><td>100m</td><td>75 kW</td></tr>
+                <tr><td>DN200 (8寸)</td><td>200SZQ150-20-15</td><td>150 m³/h</td><td>20m</td><td>15 kW</td></tr>
+                <tr><td>DN200 (8寸)</td><td>200SZQ500-80-180</td><td>500 m³/h</td><td>80m</td><td>180 kW</td></tr>
+                <tr><td>DN250 (10寸)</td><td>250SZQ600-40-110</td><td>600 m³/h</td><td>40m</td><td>110 kW</td></tr>
+                <tr><td>DN250 (10寸)</td><td>250SZQ800-50-175</td><td>800 m³/h</td><td>50m</td><td>175 kW</td></tr>
+              </tbody>
+            </table>
+            <div class="tags">
+              <span class="tag">高扬程</span>
+              <span class="tag">多级叶轮</span>
+              <span class="tag">地铁隧道</span>
+              <span class="tag">深基坑</span>
+              <span class="tag">最高200m</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item fade-in">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span>双用防汛泵</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-inner">
+            <p class="desc">一台电机通过更换叶轮组件，实现大流量与高扬程双模式切换。特别适合工况多变、需要灵活应对的排涝场景，有效降低装备采购和运维成本。</p>
+            <div class="product-images">
+              <img src="images/产品实物/22KW双用泵.jpg" alt="双用防汛泵" loading="lazy">
+              <img src="images/产品实物/55KW双用泵.jpg" alt="双用防汛泵" loading="lazy">
+              <img src="images/产品实物/55kw双用泵(2).png" alt="双用防汛泵" loading="lazy">
+            </div>
+            <table class="param-table">
+              <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>200SZQ-HL-22</td><td>500 m³/h (大流量)</td><td>32m (高扬程)</td><td>22 kW</td><td>大流量/高扬程双模式</td></tr>
+                <tr><td>250SZQ-HL-30</td><td>600 m³/h (大流量)</td><td>30m (高扬程)</td><td>30 kW</td><td>大流量/高扬程双模式</td></tr>
+              </tbody>
+            </table>
+            <div class="tags">
+              <span class="tag">双模式切换</span>
+              <span class="tag">一机多用</span>
+              <span class="tag">快速换装</span>
+              <span class="tag">灵活部署</span>
+              <span class="tag">降本增效</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item fade-in">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span>下吸式防汛泵</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-inner">
+            <p class="desc">进水口位于泵体底部，可将积水水位抽降至100mm以下，极大减少残留水。适合地下车库、地下室、低洼地带等需要彻底排水的场景。</p>
+            <div class="product-images">
+              <img src="images/产品实物/22kw轻型.png" alt="下吸式防汛泵" loading="lazy">
+              <img src="images/产品实物/600方轻型.png" alt="下吸式防汛泵" loading="lazy">
+              <img src="images/产品实物/轻型带浮圈.jpg" alt="下吸式防汛泵" loading="lazy">
+            </div>
+            <table class="param-table">
+              <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>150SZQ200-9-7.5L</td><td>200 m³/h</td><td>9m</td><td>7.5 kW</td><td>DN150 (6寸)</td></tr>
+                <tr><td>200SZQ500-9-22L</td><td>500 m³/h</td><td>9m</td><td>22 kW</td><td>DN200 (8寸)</td></tr>
+                <tr><td>200SZQ600-10-30L</td><td>600 m³/h</td><td>10m</td><td>30 kW</td><td>DN200 (8寸)</td></tr>
+                <tr><td>250SZQ800-9-37L</td><td>800 m³/h</td><td>9m</td><td>37 kW</td><td>DN250 (10寸)</td></tr>
+              </tbody>
+            </table>
+            <div class="tags">
+              <span class="tag">下吸式</span>
+              <span class="tag">超低水位</span>
+              <span class="tag">彻底排水</span>
+              <span class="tag">地下车库</span>
+              <span class="tag">低洼排涝</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item fade-in">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span>接力泵（增压输送）</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-inner">
+            <p class="desc">用于远距离输水场景，当单台泵扬程不足以覆盖输送距离时，通过接力方式逐级增压。支持大流量和高扬程两种模式，适用于长距离排水、跨区域调水等工程。</p>
+            <div class="product-images">
+              <img src="images/产品实物/接力装置泵.png" alt="接力泵（增压输送）" loading="lazy">
+            </div>
+            <table class="param-table">
+              <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>200SZQ500-10-22GL</td><td>500 m³/h</td><td>10m</td><td>22 kW</td><td>大流量接力</td></tr>
+                <tr><td>250SZQ800-10-37GL</td><td>800 m³/h</td><td>10m</td><td>37 kW</td><td>大流量接力</td></tr>
+                <tr><td>300SZQ1000-10-45GL</td><td>1000 m³/h</td><td>10m</td><td>45 kW</td><td>大流量接力</td></tr>
+                <tr><td>150SZQ150-35-22GL</td><td>150 m³/h</td><td>35m</td><td>22 kW</td><td>高扬程接力</td></tr>
+                <tr><td>200SZQ400-80-150GL</td><td>400 m³/h</td><td>80m</td><td>150 kW</td><td>高扬程接力</td></tr>
+              </tbody>
+            </table>
+            <div class="tags">
+              <span class="tag">远距离输送</span>
+              <span class="tag">逐级增压</span>
+              <span class="tag">跨区域调水</span>
+              <span class="tag">大流量/高扬程可选</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item fade-in">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span>液压轴流泵（便携式）</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-inner">
+            <p class="desc">车载液压驱动，无需市电，机动性强。DN200/250/300口径，流量300-1500m³/h，扬程6-15m。液压动力站15-90HP，可搭载在各类应急车辆上快速响应。</p>
+            <div class="product-images">
+              <img src="images/产品实物/b846a4f0-3e25-49d3-9503-def0c062b9a1.png" alt="液压轴流泵（便携式）" loading="lazy">
+              <img src="images/产品实物/cbb9e1dbcc814ff777fbb0df55fed24a.jpg" alt="液压轴流泵（便携式）" loading="lazy">
+            </div>
+            <table class="param-table">
+              <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>DN200</td><td>300-600 m³/h</td><td>6-15m</td><td>15-30 HP</td><td>车载液压</td></tr>
+                <tr><td>DN250</td><td>600-1000 m³/h</td><td>6-12m</td><td>30-60 HP</td><td>车载液压</td></tr>
+                <tr><td>DN300</td><td>1000-1500 m³/h</td><td>6-10m</td><td>60-90 HP</td><td>车载液压</td></tr>
+              </tbody>
+            </table>
+            <div class="tags">
+              <span class="tag">液压驱动</span>
+              <span class="tag">无需市电</span>
+              <span class="tag">车载移动</span>
+              <span class="tag">快速响应</span>
+              <span class="tag">机动灵活</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item fade-in">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span>防汛单元（一体化排涝箱）</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-inner">
+            <p class="desc">型号CMFD01，将泵+电器柜+浮体+接头+水带集成于一个箱体内，重量约200kg，外形尺寸1000×800×1250mm。即开即用，无需现场组装，极大缩短应急响应时间。</p>
+            <div class="product-images">
+              <img src="images/产品实物/4轮移动泵车.jpg" alt="防汛单元（一体化排涝箱）" loading="lazy">
+              <img src="images/产品实物/内蒙古45kw.png" alt="防汛单元（一体化排涝箱）" loading="lazy">
+              <img src="images/配件与安装/65台防汛单元.png" alt="防汛单元（一体化排涝箱）" loading="lazy">
+            </div>
+            <table class="param-table">
+              <thead><tr><th>口径/型号</th><th>代表型号</th><th>流量/模式</th><th>扬程</th><th>功率</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>CMFD01</td><td>集成式</td><td>200 kg</td><td>1000×800×1250mm</td><td>含泵/电器柜/浮体/水带</td></tr>
+              </tbody>
+            </table>
+            <div class="tags">
+              <span class="tag">一体化集成</span>
+              <span class="tag">即开即用</span>
+              <span class="tag">免组装</span>
+              <span class="tag">应急响应</span>
+              <span class="tag">移动排涝</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Application Scenarios ===== -->
+<section class="section scenarios" id="scenarios">
+  <div class="container">
+    <h2 class="section-title">应用场景</h2>
+    <p class="section-subtitle">8大领域 · 覆盖防汛排涝全维度需求</p>
+    <div class="section-divider"></div>
+    <div class="scenario-grid">
+
+      <div class="scenario-card fade-in">
+        <div class="icon">&#9888;</div>
+        <h3>应急救援排水</h3>
+        <p>防汛抗旱、抗洪抢险第一线。洞庭湖排水抢险、江西防汛应急中已完成多次实战考验。</p>
+        <div class="rec">推荐：大流量防汛泵 / 防汛单元</div>
+      </div>
+
+      <div class="scenario-card fade-in">
+        <div class="icon">&#128647;</div>
+        <h3>地铁隧道排水</h3>
+        <p>杭州地铁等高扬程排水项目已安装交付，支持深基坑和隧道长期稳定排水。</p>
+        <div class="rec">推荐：高扬程防汛泵 100-200m</div>
+      </div>
+
+      <div class="scenario-card fade-in">
+        <div class="icon">&#127754;</div>
+        <h3>水利水务工程</h3>
+        <p>四川自贡/成都水库输水工程中应用，支持大流量远距离调水。</p>
+        <div class="rec">推荐：接力泵 + 大流量泵</div>
+      </div>
+
+      <div class="scenario-card fade-in">
+        <div class="icon">&#127968;</div>
+        <h3>地下车库排水</h3>
+        <p>自动值机模式，水位到达设定位置自动启停，实现无人值守。</p>
+        <div class="rec">推荐：下吸式防汛泵</div>
+      </div>
+
+      <div class="scenario-card fade-in">
+        <div class="icon">&#127751;</div>
+        <h3>城市内涝排涝</h3>
+        <p>南京市政管网施工中配合使用，应对暴雨城市内涝。</p>
+        <div class="rec">推荐：液压轴流泵 + 防汛单元</div>
+      </div>
+
+      <div class="scenario-card fade-in">
+        <div class="icon">&#127794;</div>
+        <h3>农业灌溉排灌</h3>
+        <p>抽水灌溉、渔业排灌，防腐材质可选，适应多种水体环境。</p>
+        <div class="rec">推荐：大流量防汛泵 不锈钢款</div>
+      </div>
+
+      <div class="scenario-card fade-in">
+        <div class="icon">&#127754;</div>
+        <h3>海水养殖</h3>
+        <p>可选择不锈钢或防腐涂层材质，耐海水腐蚀，适合沿海养殖业。</p>
+        <div class="rec">推荐：大流量防汛泵 不锈钢</div>
+      </div>
+
+      <div class="scenario-card fade-in">
+        <div class="icon">&#127942;</div>
+        <h3>大型赛事保障</h3>
+        <p>杭州亚运会水上项目工程排水保障，确保赛事安全运行。</p>
+        <div class="rec">推荐：双用防汛泵 + 防汛单元</div>
+      </div>
+
+      <div class="scenario-card fade-in">
+        <div class="icon">&#127753;</div>
+        <h3>城市管网维护</h3>
+        <p>液压轴流泵配合车载部署，快速响应管道破裂等突发排水需求。</p>
+        <div class="rec">推荐：液压轴流泵</div>
+      </div>
+
+      <div class="scenario-card fade-in">
+        <div class="icon">&#127755;</div>
+        <h3>补水供水工程</h3>
+        <p>桥梁涵洞抽水、景观补水等，支持临时和永久安装。</p>
+        <div class="rec">推荐：大流量防汛泵</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Engineering Cases ===== -->
+<section class="section cases" id="cases">
+  <div class="container">
+    <h2 class="section-title">工程案例</h2>
+    <p class="section-subtitle">服务300+项目 · 覆盖全国主要省市</p>
+    <div class="section-divider"></div>
+    <div class="case-grid">
+
+      <div class="case-card fade-in">
+        <h3>杭州亚运会水上项目工程</h3>
+        <div class="loc">浙江杭州</div>
+        <div class="scale">大型赛事排水保障</div>
+      </div>
+
+      <div class="case-card fade-in">
+        <h3>杭州地铁高扬程泵安装交付</h3>
+        <div class="loc">浙江杭州</div>
+        <div class="scale">地铁隧道排水系统</div>
+      </div>
+
+      <div class="case-card fade-in">
+        <h3>南京市政管网施工排水</h3>
+        <div class="loc">江苏南京</div>
+        <div class="scale">城市管网排水工程</div>
+      </div>
+
+      <div class="case-card fade-in">
+        <h3>湖南洞庭湖排水抢险</h3>
+        <div class="loc">湖南岳阳</div>
+        <div class="scale">防汛应急排水</div>
+      </div>
+
+      <div class="case-card fade-in">
+        <h3>四川自贡水库输水工程</h3>
+        <div class="loc">四川自贡</div>
+        <div class="scale">水利输水工程</div>
+      </div>
+
+      <div class="case-card fade-in">
+        <h3>四川成都水库输水工程</h3>
+        <div class="loc">四川成都</div>
+        <div class="scale">水利输水工程</div>
+      </div>
+
+      <div class="case-card fade-in">
+        <h3>江西防汛应急抢险</h3>
+        <div class="loc">江西省</div>
+        <div class="scale">应急防汛排水</div>
+      </div>
+
+      <div class="case-card fade-in">
+        <h3>内蒙古应急厅项目</h3>
+        <div class="loc">内蒙古</div>
+        <div class="scale">50台300SZQ1000-10-45批量交付</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Qualification Certificates ===== -->
+<section class="section certs" id="certs">
+  <div class="container">
+    <h2 class="section-title">资质证书</h2>
+    <p class="section-subtitle">51项权威认证 · 彰显专业实力</p>
+    <div class="section-divider"></div>
+
+    <div class="cert-group fade-in">
+      <h3>节能认证 (3项)</h3>
+      <div class="cert-grid">
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/09_05-1_永磁同步电机防汛泵_国家一级节能认证_CQC24701453667.png')" title="点击放大">
+          <img src="images/资质证书/09_05-1_永磁同步电机防汛泵_国家一级节能认证_CQC24701453667.png" alt="资质证书/09_05-1_永磁同步电机防汛泵_国家一级节能认证_CQC24701453667.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/10_05-2_永磁同步电机防汛泵_国家一级节能认证_CQC24701453674.png')" title="点击放大">
+          <img src="images/资质证书/10_05-2_永磁同步电机防汛泵_国家一级节能认证_CQC24701453674.png" alt="资质证书/10_05-2_永磁同步电机防汛泵_国家一级节能认证_CQC24701453674.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/11_05-3_永磁同步电动机_国家一级节能认证_CQC19701217917.png')" title="点击放大">
+          <img src="images/资质证书/11_05-3_永磁同步电动机_国家一级节能认证_CQC19701217917.png" alt="资质证书/11_05-3_永磁同步电动机_国家一级节能认证_CQC19701217917.png" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-group fade-in">
+      <h3>军工资质 (2项)</h3>
+      <div class="cert-grid">
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/14_08-1_装备承制单位资格证书_25B0001364.png')" title="点击放大">
+          <img src="images/资质证书/14_08-1_装备承制单位资格证书_25B0001364.png" alt="资质证书/14_08-1_装备承制单位资格证书_25B0001364.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/15_08-2_装备承制单位资格证书副本_25B0001364.png')" title="点击放大">
+          <img src="images/资质证书/15_08-2_装备承制单位资格证书副本_25B0001364.png" alt="资质证书/15_08-2_装备承制单位资格证书副本_25B0001364.png" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-group fade-in">
+      <h3>体系认证 (7项)</h3>
+      <div class="cert-grid">
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/21_12-1_ISO9001质量管理体系认证_29025Q10998-05R1M.png')" title="点击放大">
+          <img src="images/资质证书/21_12-1_ISO9001质量管理体系认证_29025Q10998-05R1M.png" alt="资质证书/21_12-1_ISO9001质量管理体系认证_29025Q10998-05R1M.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/22_12-2_ISO14001环境管理体系认证_29025E10723-05R1M.png')" title="点击放大">
+          <img src="images/资质证书/22_12-2_ISO14001环境管理体系认证_29025E10723-05R1M.png" alt="资质证书/22_12-2_ISO14001环境管理体系认证_29025E10723-05R1M.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/23_12-3_ISO45001职业健康安全管理体系_29025S10699-05R1M.png')" title="点击放大">
+          <img src="images/资质证书/23_12-3_ISO45001职业健康安全管理体系_29025S10699-05R1M.png" alt="资质证书/23_12-3_ISO45001职业健康安全管理体系_29025S10699-05R1M.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/24_12-4_售后服务认证_五星级_55025F0184R0.png')" title="点击放大">
+          <img src="images/资质证书/24_12-4_售后服务认证_五星级_55025F0184R0.png" alt="资质证书/24_12-4_售后服务认证_五星级_55025F0184R0.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/25_12-5_知识产权合规管理体系认证.png')" title="点击放大">
+          <img src="images/资质证书/25_12-5_知识产权合规管理体系认证.png" alt="资质证书/25_12-5_知识产权合规管理体系认证.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/12_06_中国环境标志认证证书_CEC-RL-I-1784-2024.png')" title="点击放大">
+          <img src="images/资质证书/12_06_中国环境标志认证证书_CEC-RL-I-1784-2024.png" alt="资质证书/12_06_中国环境标志认证证书_CEC-RL-I-1784-2024.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/13_07_永磁同步电机防汛泵产品质量认证证书_CFDP-ZSRK-0015.png')" title="点击放大">
+          <img src="images/资质证书/13_07_永磁同步电机防汛泵产品质量认证证书_CFDP-ZSRK-0015.png" alt="资质证书/13_07_永磁同步电机防汛泵产品质量认证证书_CFDP-ZSRK-0015.png" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-group fade-in">
+      <h3>资质荣誉 (4项)</h3>
+      <div class="cert-grid">
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/06_03_国家高新技术企业证书.png')" title="点击放大">
+          <img src="images/资质证书/06_03_国家高新技术企业证书.png" alt="资质证书/06_03_国家高新技术企业证书.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/07_04-1_浙江省专精特新中小企业.png')" title="点击放大">
+          <img src="images/资质证书/07_04-1_浙江省专精特新中小企业.png" alt="资质证书/07_04-1_浙江省专精特新中小企业.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/08_04-2_浙江省创新型中小企业.png')" title="点击放大">
+          <img src="images/资质证书/08_04-2_浙江省创新型中小企业.png" alt="资质证书/08_04-2_浙江省创新型中小企业.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/28_15_荣格技术创新奖_高速深井泵.png')" title="点击放大">
+          <img src="images/资质证书/28_15_荣格技术创新奖_高速深井泵.png" alt="资质证书/28_15_荣格技术创新奖_高速深井泵.png" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-group fade-in">
+      <h3>协会与科研 (7项)</h3>
+      <div class="cert-grid">
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/16_09-1_中国消防协会会员证书_编号2172.png')" title="点击放大">
+          <img src="images/资质证书/16_09-1_中国消防协会会员证书_编号2172.png" alt="资质证书/16_09-1_中国消防协会会员证书_编号2172.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/17_09-2_中国工业节能与清洁生产协会会员证书.png')" title="点击放大">
+          <img src="images/资质证书/17_09-2_中国工业节能与清洁生产协会会员证书.png" alt="资质证书/17_09-2_中国工业节能与清洁生产协会会员证书.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/18_09-3_会员证书.png')" title="点击放大">
+          <img src="images/资质证书/18_09-3_会员证书.png" alt="资质证书/18_09-3_会员证书.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/19_10_防汛排涝泵研究中心.png')" title="点击放大">
+          <img src="images/资质证书/19_10_防汛排涝泵研究中心.png" alt="资质证书/19_10_防汛排涝泵研究中心.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/20_11_科技成果认证证书_防砂结构_DJ110022024Y0002.png')" title="点击放大">
+          <img src="images/资质证书/20_11_科技成果认证证书_防砂结构_DJ110022024Y0002.png" alt="资质证书/20_11_科技成果认证证书_防砂结构_DJ110022024Y0002.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/26_13_软件著作权_永磁同步电机泵变频调速自动控制及远程系统_2021SR0626339.png')" title="点击放大">
+          <img src="images/资质证书/26_13_软件著作权_永磁同步电机泵变频调速自动控制及远程系统_2021SR0626339.png" alt="资质证书/26_13_软件著作权_永磁同步电机泵变频调速自动控制及远程系统_2021SR0626339.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/27_14_软件著作网页查询.png')" title="点击放大">
+          <img src="images/资质证书/27_14_软件著作网页查询.png" alt="资质证书/27_14_软件著作网页查询.png" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-group fade-in">
+      <h3>基础证照 (2项)</h3>
+      <div class="cert-grid">
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/04_01_营业执照.png')" title="点击放大">
+          <img src="images/资质证书/04_01_营业执照.png" alt="资质证书/04_01_营业执照.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/05_02_开户许可证.png')" title="点击放大">
+          <img src="images/资质证书/05_02_开户许可证.png" alt="资质证书/05_02_开户许可证.png" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-group fade-in">
+      <h3>专利证书 (26项)</h3>
+      <div class="cert-grid">
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/29_16-01_发明专利_高速深井泵_ZL201110429319.7.png')" title="点击放大">
+          <img src="images/资质证书/29_16-01_发明专利_高速深井泵_ZL201110429319.7.png" alt="资质证书/29_16-01_发明专利_高速深井泵_ZL201110429319.7.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/30_16-02_发明专利_永磁同步电机_ZL201510117114.1.png')" title="点击放大">
+          <img src="images/资质证书/30_16-02_发明专利_永磁同步电机_ZL201510117114.1.png" alt="资质证书/30_16-02_发明专利_永磁同步电机_ZL201510117114.1.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/31_16-03_发明专利_水泵叶轮制造方法及水泵_ZL202010791360.3.png')" title="点击放大">
+          <img src="images/资质证书/31_16-03_发明专利_水泵叶轮制造方法及水泵_ZL202010791360.3.png" alt="资质证书/31_16-03_发明专利_水泵叶轮制造方法及水泵_ZL202010791360.3.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/32_16-04_发明专利_一种单相电机_ZL202011288050.6.png')" title="点击放大">
+          <img src="images/资质证书/32_16-04_发明专利_一种单相电机_ZL202011288050.6.png" alt="资质证书/32_16-04_发明专利_一种单相电机_ZL202011288050.6.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/33_16-05_发明专利_一种离心水泵_ZL202011288046.X.png')" title="点击放大">
+          <img src="images/资质证书/33_16-05_发明专利_一种离心水泵_ZL202011288046.X.png" alt="资质证书/33_16-05_发明专利_一种离心水泵_ZL202011288046.X.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/34_16-06_发明专利_一种主轴电机_ZL202011288015.4.png')" title="点击放大">
+          <img src="images/资质证书/34_16-06_发明专利_一种主轴电机_ZL202011288015.4.png" alt="资质证书/34_16-06_发明专利_一种主轴电机_ZL202011288015.4.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/35_16-07_发明专利_节能高效高频潜水电机_ZL202310997428.7.png')" title="点击放大">
+          <img src="images/资质证书/35_16-07_发明专利_节能高效高频潜水电机_ZL202310997428.7.png" alt="资质证书/35_16-07_发明专利_节能高效高频潜水电机_ZL202310997428.7.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/36_16-08_实用新型_一种浮体泵_ZL202221473627.5.png')" title="点击放大">
+          <img src="images/资质证书/36_16-08_实用新型_一种浮体泵_ZL202221473627.5.png" alt="资质证书/36_16-08_实用新型_一种浮体泵_ZL202221473627.5.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/37_16-09_德国实用新型_智能高效深井泵_212012000152.2.png')" title="点击放大">
+          <img src="images/资质证书/37_16-09_德国实用新型_智能高效深井泵_212012000152.2.png" alt="资质证书/37_16-09_德国实用新型_智能高效深井泵_212012000152.2.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/38_16-10_实用新型_一种智能高效深井泵_ZL201220379287.X.png')" title="点击放大">
+          <img src="images/资质证书/38_16-10_实用新型_一种智能高效深井泵_ZL201220379287.X.png" alt="资质证书/38_16-10_实用新型_一种智能高效深井泵_ZL201220379287.X.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/39_16-11_实用新型_高速太阳能井泵_ZL201220571732.2.png')" title="点击放大">
+          <img src="images/资质证书/39_16-11_实用新型_高速太阳能井泵_ZL201220571732.2.png" alt="资质证书/39_16-11_实用新型_高速太阳能井泵_ZL201220571732.2.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/40_16-12_实用新型_机床冷却泵_ZL201220571783.5.png')" title="点击放大">
+          <img src="images/资质证书/40_16-12_实用新型_机床冷却泵_ZL201220571783.5.png" alt="资质证书/40_16-12_实用新型_机床冷却泵_ZL201220571783.5.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/41_16-13_实用新型_一种高效离心式水泵_ZL201220422392.7.png')" title="点击放大">
+          <img src="images/资质证书/41_16-13_实用新型_一种高效离心式水泵_ZL201220422392.7.png" alt="资质证书/41_16-13_实用新型_一种高效离心式水泵_ZL201220422392.7.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/42_16-14_实用新型_一体式高速深井泵_ZL201320074172.4.png')" title="点击放大">
+          <img src="images/资质证书/42_16-14_实用新型_一体式高速深井泵_ZL201320074172.4.png" alt="资质证书/42_16-14_实用新型_一体式高速深井泵_ZL201320074172.4.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/43_16-15_实用新型_智能高效管道泵_ZL201320497655.5.png')" title="点击放大">
+          <img src="images/资质证书/43_16-15_实用新型_智能高效管道泵_ZL201320497655.5.png" alt="资质证书/43_16-15_实用新型_智能高效管道泵_ZL201320497655.5.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/44_16-16_实用新型_一种水泵_ZL201320543445.5.png')" title="点击放大">
+          <img src="images/资质证书/44_16-16_实用新型_一种水泵_ZL201320543445.5.png" alt="资质证书/44_16-16_实用新型_一种水泵_ZL201320543445.5.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/45_16-17_实用新型_一种高速管中泵_ZL201320544914.5.png')" title="点击放大">
+          <img src="images/资质证书/45_16-17_实用新型_一种高速管中泵_ZL201320544914.5.png" alt="资质证书/45_16-17_实用新型_一种高速管中泵_ZL201320544914.5.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/46_16-18_实用新型_一种潜水泵_ZL201420091521.8.png')" title="点击放大">
+          <img src="images/资质证书/46_16-18_实用新型_一种潜水泵_ZL201420091521.8.png" alt="资质证书/46_16-18_实用新型_一种潜水泵_ZL201420091521.8.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/47_16-19_实用新型_一种水泵_ZL201420323569.3.png')" title="点击放大">
+          <img src="images/资质证书/47_16-19_实用新型_一种水泵_ZL201420323569.3.png" alt="资质证书/47_16-19_实用新型_一种水泵_ZL201420323569.3.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/48_16-20_实用新型_一种深井泵_ZL201420481020.X.png')" title="点击放大">
+          <img src="images/资质证书/48_16-20_实用新型_一种深井泵_ZL201420481020.X.png" alt="资质证书/48_16-20_实用新型_一种深井泵_ZL201420481020.X.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/49_16-21_实用新型_一种轴流泵_ZL201620069681.2.png')" title="点击放大">
+          <img src="images/资质证书/49_16-21_实用新型_一种轴流泵_ZL201620069681.2.png" alt="资质证书/49_16-21_实用新型_一种轴流泵_ZL201620069681.2.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/50_16-22_实用新型_一种下吸式轴流泵_ZL202122599602.1.png')" title="点击放大">
+          <img src="images/资质证书/50_16-22_实用新型_一种下吸式轴流泵_ZL202122599602.1.png" alt="资质证书/50_16-22_实用新型_一种下吸式轴流泵_ZL202122599602.1.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/52_16-24_实用新型_一种叶轮及泵_ZL202321012918.9.png')" title="点击放大">
+          <img src="images/资质证书/52_16-24_实用新型_一种叶轮及泵_ZL202321012918.9.png" alt="资质证书/52_16-24_实用新型_一种叶轮及泵_ZL202321012918.9.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/53_16-25_外观设计_浮体泵_ZL202230353732.4.png')" title="点击放大">
+          <img src="images/资质证书/53_16-25_外观设计_浮体泵_ZL202230353732.4.png" alt="资质证书/53_16-25_外观设计_浮体泵_ZL202230353732.4.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/54_16-26_外观设计_浮体_ZL202230353814.9.png')" title="点击放大">
+          <img src="images/资质证书/54_16-26_外观设计_浮体_ZL202230353814.9.png" alt="资质证书/54_16-26_外观设计_浮体_ZL202230353814.9.png" loading="lazy">
+        </div>
+
+        <div class="cert-thumb" onclick="openLightbox('images/资质证书/55_16-27_外观设计_液压泵_ZL202230444077.3.png')" title="点击放大">
+          <img src="images/资质证书/55_16-27_外观设计_液压泵_ZL202230444077.3.png" alt="资质证书/55_16-27_外观设计_液压泵_ZL202230444077.3.png" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== Lightbox ===== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img src="" alt="证书放大图" id="lightboxImg">
+</div>
+
+<!-- ===== Accessories ===== -->
+<section class="section accessories" id="accessories">
+  <div class="container">
+    <h2 class="section-title">配件目录</h2>
+    <p class="section-subtitle">19类配件 · 一站配齐</p>
+    <div class="section-divider"></div>
+    <div class="acc-grid">
+
+      <div class="acc-card fade-in">
+        <h4>电器柜 — 普通型</h4>
+        <p>5.5-110kW多规格，IP44防护，单机/双机型，适用于常规部署场景</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>电器柜 — 车上型</h4>
+        <p>5.5-110kW，IP54防护，专为车载部署设计，抗振动耐颠簸</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>电器柜 — 工程黄</h4>
+        <p>专用工程黄色涂装，适应恶劣户外环境，防水防尘等级高</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>电器柜 — 新型75KW</h4>
+        <p>最新一代75kW电器柜，优化散热结构，支持远程监控接口</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>浮体 — DN200泵</h4>
+        <p>浮力32KG，适配DN200口径泵，轻便易携</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>浮体 — DN200-250</h4>
+        <p>浮力78KG，适配DN200-250口径泵，增强型浮力设计</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>浮体 — DN300</h4>
+        <p>浮力120KG，适配DN300口径泵，大浮力稳定支撑</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>浮体 — 轻便型</h4>
+        <p>红色轻便浮圈，快速安装，适合小型泵应急场景</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>三爪式水带接头</h4>
+        <p>标准三爪快装接头，适配各口径水带</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>三爪式出水口</h4>
+        <p>泵体标准出水口，三爪式快速连接</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>水带卡箍</h4>
+        <p>不锈钢卡箍，紧固可靠，安装便捷</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>不锈钢叶轮</h4>
+        <p>304不锈钢材质，耐腐蚀，适配各型号泵</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>铝合金叶轮</h4>
+        <p>轻量化设计，降低整泵重量，适合便携场景</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>永磁同步电机总成</h4>
+        <p>核心动力单元，能效比常规电机提升30%以上</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>移动泵车底盘</h4>
+        <p>4轮移动底盘，含牵引架，快速机动部署</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>防汛单元箱体</h4>
+        <p>一体化集成箱体，1000×800×1250mm，坚固耐用</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>控制电缆及接头</h4>
+        <p>防水控制电缆，含快速接头，IP67防护</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>密封件维修包</h4>
+        <p>含O型圈、机械密封、轴承等易损件</p>
+      </div>
+
+      <div class="acc-card fade-in">
+        <h4>远程监控模块</h4>
+        <p>4G/WiFi远程监控，支持手机APP查看运行状态</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section cta" id="contact">
+  <div class="container">
+    <div class="cta-grid">
+      <div class="cta-info fade-in">
+        <h2>联系我们</h2>
+        <p>&#128222; 热线电话：<span class="highlight">15968662709</span></p>
+        <p>&#9993; 电子邮箱：1320197922@139.com</p>
+        <p>&#127968; 公司地址：浙江省温岭市大溪镇塔岙工业区</p>
+        <p>&#128188; 经营范围：永磁防汛泵研发制造 · 排涝设备集成 · 应急排水方案</p>
+      </div>
+      <div class="cta-action fade-in">
+        <a href="#contact" class="cta-btn" onclick="alert('感谢关注！请拨打 15968662709 或发送邮件至 1320197922@139.com 获取完整产品手册。')">获取完整产品手册</a>
+        <p style="margin-top:16px;color:var(--text-dim);font-size:0.85rem;">免费提供选型咨询和排水方案设计</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 浙江创美机电有限公司 版权所有 | 浙ICP备XXXXXXXX号</p>
+  </div>
+</footer>
+
+<!-- ===== Scripts ===== -->
+<script>
+// Navbar toggle
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close nav on link click
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Accordion
+function toggleAccordion(header) {
+  var body = header.nextElementSibling;
+  var isOpen = body.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.accordion-body.open').forEach(function(b) {
+    b.classList.remove('open');
+    b.previousElementSibling.classList.remove('active');
+    b.previousElementSibling.setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    body.classList.add('open');
+    header.classList.add('active');
+    header.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// Lightbox
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Scroll animation
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(function(el) {
+  observer.observe(el);
+});
+
+// Active nav on scroll
+var sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', function() {
+  var scrollY = window.scrollY + 100;
+  sections.forEach(function(section) {
+    var id = section.getAttribute('id');
+    var link = document.querySelector('.nav-links a[href="#' + id + '"]');
+    if (link && section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY) {
+      document.querySelectorAll('.nav-links a').forEach(function(a) { a.classList.remove('active'); });
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
