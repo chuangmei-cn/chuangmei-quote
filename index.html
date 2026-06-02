@@ -669,6 +669,175 @@ tr:hover { background: rgba(0,163,224,0.08); }
   font-weight: 600;
 }
 
+/* Customer Info */
+.customer-info {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.customer-info .ci-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+.customer-info .ci-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+}
+.customer-info .ci-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.customer-info .ci-field.full {
+  grid-column: 1 / -1;
+}
+.customer-info .ci-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.customer-info .ci-field input,
+.customer-info .ci-field textarea {
+  padding: 8px 10px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  transition: var(--transition);
+}
+.customer-info .ci-field input:focus,
+.customer-info .ci-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.customer-info .ci-field textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* History Records */
+.history-section {
+  margin-top: 16px;
+}
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px 12px;
+  background: var(--bg-mid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+.history-header:hover { border-color: var(--accent); }
+.history-header .hh-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.history-header .hh-arrow {
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: transform 0.3s;
+}
+.history-header.expanded .hh-arrow {
+  transform: rotate(180deg);
+}
+.history-body {
+  display: none;
+  margin-top: 8px;
+}
+.history-body.open { display: block; }
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.history-table th {
+  background: var(--bg-deep);
+  color: var(--accent);
+  padding: 8px 6px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent);
+  font-size: 11px;
+}
+.history-table td {
+  padding: 6px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.history-table tr:nth-child(even) { background: rgba(27,45,74,0.4); }
+.history-table tr:hover { background: rgba(0,163,224,0.06); }
+.history-actions button {
+  padding: 4px 8px;
+  font-size: 11px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0 2px;
+  transition: var(--transition);
+}
+.history-actions button:hover { border-color: var(--accent); color: var(--text); }
+
+/* Print Styles */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; color: #000; }
+  .header, .nav-tabs, .float-cart, .cart-overlay, .cart-panel, .toast,
+  .search-bar, .btn, .btn-add, .history-section, .discount-bar,
+  .combo-selector, .global-search, .section-title, .customer-info .ci-actions {
+    display: none !important;
+  }
+  .page { display: block !important; padding: 0 !important; }
+  .combo-result { border: 2px solid #000; padding: 20px; background: #fff; }
+  .combo-result h4 { color: #000; font-size: 18px; }
+  .combo-total { border-top: 2px solid #000; color: #000; }
+  .customer-info { background: #fff; border: 1px solid #ccc; padding: 12px; }
+  .customer-info .ci-field label { color: #555; }
+  .customer-info .ci-field input, .customer-info .ci-field textarea {
+    background: #fff; border: 1px solid #999; color: #000;
+  }
+  .ci-title { color: #000; }
+  .print-header {
+    display: block !important;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+  }
+  .print-header .ph-logo { font-size: 22px; font-weight: 700; color: #000; }
+  .print-header .ph-sub { font-size: 12px; color: #555; margin-top: 4px; }
+  .print-only { display: block !important; }
+  table { border-collapse: collapse; }
+  th { background: #eee; color: #000; border-bottom: 2px solid #000; }
+  td { border-bottom: 1px solid #ccc; }
+  .price-cell { color: #000; }
+}
+.print-only { display: none; }
+.print-header { display: none; }
+@media (max-width: 768px) {
+  .customer-info .ci-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -717,13 +886,80 @@ tr:hover { background: rgba(0,163,224,0.08); }
 <div id="page-combo" class="page">
   <div class="section-title">组合报价</div>
   <p style="color:var(--text-secondary);margin-bottom:16px;">选择泵型和对应配件，快速生成组合报价单。先在防汛泵和配件页面添加到清单，再切换至此查看。</p>
+
+  <!-- 客户信息 -->
+  <div class="customer-info">
+    <div class="ci-title">客户信息</div>
+    <div class="ci-grid">
+      <div class="ci-field">
+        <label>项目名称</label>
+        <input type="text" id="ci-project" placeholder="如：XX市防汛工程" oninput="autoSaveCustomerInfo()">
+      </div>
+      <div class="ci-field">
+        <label>客户姓名</label>
+        <input type="text" id="ci-customer" placeholder="客户姓名" oninput="autoSaveCustomerInfo()">
+      </div>
+      <div class="ci-field">
+        <label>联系电话</label>
+        <input type="text" id="ci-phone" placeholder="手机/座机" oninput="autoSaveCustomerInfo()">
+      </div>
+      <div class="ci-field">
+        <label>日期</label>
+        <input type="date" id="ci-date" onchange="autoSaveCustomerInfo()">
+      </div>
+      <div class="ci-field">
+        <label>名称</label>
+        <input type="text" id="ci-model" placeholder="自动汇总或手动修改" oninput="autoSaveCustomerInfo()">
+      </div>
+      <div class="ci-field full">
+        <label>备注</label>
+        <textarea id="ci-note" placeholder="备注信息..." oninput="autoSaveCustomerInfo()"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- 报价清单 -->
   <div class="combo-result">
-    <h4>当前报价清单汇总</h4>
-    <div id="combo-summary"></div>
-    <div class="combo-total" id="combo-total"></div>
-    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+    <!-- 打印时才显示的页头 -->
+    <div class="print-header">
+      <div class="ph-logo">创美机电</div>
+      <div class="ph-sub">浙江创美机电有限公司 | 报价单</div>
+    </div>
+    <h4 class="print-only" style="font-size:14px;color:#000;">客户信息确认</h4>
+    <div class="print-only" id="print-customer-info" style="margin-bottom:16px;font-size:13px;line-height:1.8;"></div>
+    <h4 class="no-print">当前报价清单汇总</h4>
+    <div class="no-print" id="combo-summary"></div>
+    <div class="combo-total no-print" id="combo-total"></div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;" class="ci-actions">
       <button class="btn btn-primary" onclick="copyCart()">一键复制发送微信</button>
+      <button class="btn btn-outline" onclick="exportQuote()">导出报价单</button>
+      <button class="btn btn-outline" onclick="saveRecord()">保存记录</button>
       <button class="btn btn-outline" onclick="clearCart()">清空清单</button>
+    </div>
+  </div>
+
+  <!-- 历史记录 -->
+  <div class="history-section" id="history-section" style="display:none;">
+    <div class="history-header" onclick="toggleHistory()" id="history-header">
+      <span class="hh-title">历史报价记录 (<span id="history-count">0</span>)</span>
+      <span class="hh-arrow">&#9660;</span>
+    </div>
+    <div class="history-body" id="history-body">
+      <div style="overflow-x:auto;">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>日期</th>
+              <th>项目名称</th>
+              <th>客户</th>
+              <th>名称</th>
+              <th>金额</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody"></tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
@@ -1673,11 +1909,232 @@ function showToast(msg) {
   setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
+// ============ 客户信息管理 ============
+function getCustomerInfo() {
+  return {
+    project: document.getElementById('ci-project').value.trim(),
+    customer: document.getElementById('ci-customer').value.trim(),
+    phone: document.getElementById('ci-phone').value.trim(),
+    date: document.getElementById('ci-date').value,
+    model: document.getElementById('ci-model').value.trim(),
+    note: document.getElementById('ci-note').value.trim()
+  };
+}
+
+function setCustomerInfo(info) {
+  if (!info) return;
+  document.getElementById('ci-project').value = info.project || '';
+  document.getElementById('ci-customer').value = info.customer || '';
+  document.getElementById('ci-phone').value = info.phone || '';
+  document.getElementById('ci-date').value = info.date || '';
+  document.getElementById('ci-model').value = info.model || '';
+  document.getElementById('ci-note').value = info.note || '';
+}
+
+function autoUpdateModelSpec() {
+  const models = cart.map(item => `${item.name}×${item.qty}`);
+  const modelInput = document.getElementById('ci-model');
+  if (!modelInput.value.trim() || modelInput.dataset.autoFilled === 'true') {
+    modelInput.value = models.join('; ');
+    modelInput.dataset.autoFilled = 'true';
+  }
+  // 如果用户手动改过，就不自动填充
+}
+
+function autoSaveCustomerInfo() {
+  const info = getCustomerInfo();
+  // 如果用户手动修改了型号规格，标记为非自动填充
+  const modelInput = document.getElementById('ci-model');
+  if (modelInput.value.trim() !== modelInput.dataset.lastAutoValue) {
+    modelInput.dataset.autoFilled = 'false';
+  }
+  localStorage.setItem('chuangmei_customer_info', JSON.stringify(info));
+}
+
+function autoSaveAll() {
+  autoSaveCustomerInfo();
+  localStorage.setItem('chuangmei_cart', JSON.stringify(cart));
+  localStorage.setItem('chuangmei_global_discount', JSON.stringify(globalDiscount));
+}
+
+function loadAllFromStorage() {
+  // 加载购物车
+  const savedCart = localStorage.getItem('chuangmei_cart');
+  if (savedCart) {
+    try { cart = JSON.parse(savedCart); } catch(e) {}
+  }
+  // 加载折扣
+  const savedDisc = localStorage.getItem('chuangmei_global_discount');
+  if (savedDisc) {
+    try { globalDiscount = JSON.parse(savedDisc); } catch(e) {}
+  }
+  // 加载客户信息
+  const savedInfo = localStorage.getItem('chuangmei_customer_info');
+  if (savedInfo) {
+    try { setCustomerInfo(JSON.parse(savedInfo)); } catch(e) {}
+  }
+}
+
+// ============ 导出报价单 ============
+function exportQuote() {
+  if (cart.length === 0) {
+    showToast('请先添加产品到清单');
+    return;
+  }
+  // 填充打印客户信息
+  const info = getCustomerInfo();
+  const printDiv = document.getElementById('print-customer-info');
+  printDiv.innerHTML = `
+    项目名称：${info.project || '-'}&nbsp;&nbsp;&nbsp;&nbsp;
+    客户姓名：${info.customer || '-'}&nbsp;&nbsp;&nbsp;&nbsp;
+    联系电话：${info.phone || '-'}<br>
+    名称：${info.model || '-'}&nbsp;&nbsp;&nbsp;&nbsp;
+    日期：${info.date || '-'}
+    ${info.note ? '<br>备注：' + info.note : ''}
+  `;
+
+  // 更新时间戳
+  document.getElementById('ci-date').value = document.getElementById('ci-date').value || new Date().toISOString().slice(0, 10);
+
+  // 切换到组合报价页然后打印
+  switchTab('combo');
+  setTimeout(() => { window.print(); }, 300);
+}
+
+// ============ 历史记录 ============
+function saveRecord() {
+  if (cart.length === 0) {
+    showToast('请先添加产品到清单');
+    return;
+  }
+  const info = getCustomerInfo();
+  const minDisc = Math.min(...cart.map(c => c.discount || globalDiscount));
+  let discountedTotal = 0;
+  cart.forEach(item => {
+    discountedTotal += Math.round(item.price * item.qty * (item.discount || globalDiscount) / 100);
+  });
+
+  const record = {
+    id: Date.now(),
+    date: info.date || new Date().toISOString().slice(0, 10),
+    project: info.project || '未命名项目',
+    customer: info.customer || '未知客户',
+    phone: info.phone || '',
+    nameList: cart.map(item => item.name).join('、'),
+    model: info.model || '',
+    note: info.note || '',
+    items: JSON.parse(JSON.stringify(cart)),
+    total: discountedTotal,
+    discount: minDisc,
+    savedAt: new Date().toISOString()
+  };
+
+  let history = [];
+  const savedHistory = localStorage.getItem('chuangmei_history');
+  if (savedHistory) {
+    try { history = JSON.parse(savedHistory); } catch(e) {}
+  }
+  history.unshift(record);
+  // 最多保留 50 条
+  if (history.length > 50) history = history.slice(0, 50);
+  localStorage.setItem('chuangmei_history', JSON.stringify(history));
+  renderHistory();
+  showToast('报价记录已保存');
+}
+
+function loadHistory() {
+  const savedHistory = localStorage.getItem('chuangmei_history');
+  if (!savedHistory) return [];
+  try { return JSON.parse(savedHistory); } catch(e) { return []; }
+}
+
+function renderHistory() {
+  const history = loadHistory();
+  const section = document.getElementById('history-section');
+  const tbody = document.getElementById('history-tbody');
+  const countEl = document.getElementById('history-count');
+
+  if (history.length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+
+  section.style.display = 'block';
+  countEl.textContent = history.length;
+
+  let html = '';
+  history.forEach((rec, idx) => {
+    const totalLabel = rec.discount < 100 ? rec.discount + '折' : '原价';
+    html += `<tr>
+      <td>${rec.date}</td>
+      <td>${rec.project}</td>
+      <td>${rec.customer}</td>
+      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${rec.nameList || rec.model}</td>
+      <td style="color:var(--price-color);font-weight:700;white-space:nowrap;">${fmtPrice(rec.total)} (${totalLabel})</td>
+      <td class="history-actions">
+        <button onclick="loadRecord(${idx})">加载</button>
+        <button onclick="deleteRecord(${idx})" style="color:var(--red)">删除</button>
+      </td>
+    </tr>`;
+  });
+  tbody.innerHTML = html;
+}
+
+function loadRecord(idx) {
+  const history = loadHistory();
+  const rec = history[idx];
+  if (!rec) return;
+
+  cart = JSON.parse(JSON.stringify(rec.items));
+  globalDiscount = rec.discount || 100;
+
+  setCustomerInfo({
+    project: rec.project,
+    customer: rec.customer,
+    phone: rec.phone || '',
+    date: rec.date,
+    model: rec.model,
+    note: rec.note || ''
+  });
+  document.getElementById('ci-model').dataset.autoFilled = 'false';
+
+  autoSaveAll();
+  updateCart();
+  switchTab('combo');
+  showToast('已加载历史报价记录');
+}
+
+function deleteRecord(idx) {
+  const history = loadHistory();
+  history.splice(idx, 1);
+  localStorage.setItem('chuangmei_history', JSON.stringify(history));
+  renderHistory();
+  showToast('记录已删除');
+}
+
+function toggleHistory() {
+  const body = document.getElementById('history-body');
+  const header = document.getElementById('history-header');
+  body.classList.toggle('open');
+  header.classList.toggle('expanded');
+}
+
+// ============ 覆盖 updateCart 以触发自动保存和型号更新 ============
+const _originalUpdateCart = updateCart;
+updateCart = function() {
+  _originalUpdateCart();
+  autoUpdateModelSpec();
+  autoSaveAll();
+};
+
 // ============ 初始化 ============
 document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('ci-date').value = new Date().toISOString().slice(0, 10);
+  loadAllFromStorage();
   buildPumpSections();
   buildPartsSections();
   updateCart();
+  renderHistory();
 });
 </script>
 </body>
